@@ -7,10 +7,6 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
-import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -79,49 +75,380 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: '', affix: true }
       }
     ]
   },
   {
-    path: '/documentation',
+    path: '/system-management',
     component: Layout,
+    meta: { title: '系统配置', icon: '', affix: true },
+    alwaysShow:true,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+        path: 'buildings',
+        component: () => import('@/views/system-management/buildings/index'),
+        name: 'Buildings',
+        meta: { title: '建筑群设置', icon: '', affix: true }
+      },
+      {
+        path: 'gateway',
+        component: () => import('@/views/system-management/gateway/index'),
+        name: 'Gateway',
+        meta: { title: '网关设置', icon: '', affix: true }
+      },
+      {
+        path: 'diaobiao',
+        component: () => import('@/views/system-management/dianbiao/index'),
+        name: 'Diaobiao',
+        meta: { title: '电表设置', icon: '', affix: true }
+      },
+      {
+        path: 'role',
+        component: () => import('@/views/system-management/role/index'),
+        name: 'Role',
+        meta: { title: '角色设置', icon: '', affix: true }
+      },
+      {
+        path: 'permission',
+        component: () => import('@/views/system-management/permission/index'),
+        name: 'Permission',
+        meta: { title: '角色授权', icon: '', affix: true }
+      },
+      {
+        path: 'operator',
+        component: () => import('@/views/system-management/operator/index'),
+        name: 'Operator',
+        meta: { title: '操作员设置', icon: '', affix: true }
+      },
+      {
+        path: 'default-parameters',
+        component: () => import('@/views/system-management/default-parameters/index'),
+        name: 'DefaultParameters',
+        meta: { title: '默认参数', icon: '', affix: true }
+      },
+      {
+        path: 'shuibiao',
+        component: () => import('@/views/system-management/shuibiao/index'),
+        name: 'Shuibiao',
+        meta: { title: '水表管理', icon: '', affix: true }
+      },
+      {
+        path: 'nb-dianbiao',
+        component: () => import('@/views/system-management/nb-dianbiao/index'),
+        name: 'NbDianbiao',
+        meta: { title: 'NB电表设置', icon: '', affix: true }
+      },
+      {
+        path: 'batch-issued',
+        component: () => import('@/views/system-management/batch-issued/index'),
+        name: 'BatchIssued',
+        meta: { title: '批量时控下发', icon: '', affix: true }
       }
     ]
   },
   {
-    path: '/guide',
+    path: '/user-management',
     component: Layout,
-    redirect: '/guide/index',
+    meta: { title: '用户管理', icon: '', affix: true },
+    alwaysShow:true,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide', noCache: true }
+        path: 'dianbiao-batch-operation',
+        component: () => import('@/views/user-management/dianbiao-batch-operation/index'),
+        name: 'DianbiaoBatchOperation',
+        meta: { title: '电表批量操作', icon: '', affix: true }
+      },
+      {
+        path: 'open-account',
+        component: () => import('@/views/user-management/open-account/index'),
+        name: 'OpenAccount',
+        meta: { title: '用户开户', icon: '', affix: true }
+      },
+      {
+        path: 'open-account-record',
+        component: () => import('@/views/user-management/open-account-record/index'),
+        name: 'OpenAccountRecord',
+        meta: { title: '开户记录查询', icon: '', affix: true }
+      },
+      {
+        path: 'close-account-record',
+        component: () => import('@/views/user-management/close-account-record/index'),
+        name: 'CloseAccountRecord',
+        meta: { title: '销户记录查询', icon: '', affix: true }
+      },
+      {
+        path: 'shuibiao-batch-operation',
+        component: () => import('@/views/user-management/shuibiao-batch-operation/index'),
+        name: 'ShuibiaoBatchOperation',
+        meta: { title: '水表批量操作', icon: '', affix: true }
+      },
+      {
+        path: 'close-account',
+        component: () => import('@/views/user-management/close-account/index'),
+        name: 'CloseAccount',
+        meta: { title: '用户销户', icon: '', affix: true }
+      },
+    ]
+  },
+  {
+    path: '/personal-setting',
+    component: Layout,
+    meta: { title: '个人设置', icon: '', affix: true },
+    alwaysShow:true,
+    children: [
+      {
+        path: 'change-password',
+        component: () => import('@/views/personal-setting/change-password/index'),
+        name: 'ChangePassword',
+        meta: { title: '修改密码', icon: '', affix: true }
+      },
+      {
+        path: 'operation-record',
+        component: () => import('@/views/personal-setting/operation-record/index'),
+        name: 'OperationRecord',
+        meta: { title: '操作记录', icon: '', affix: true }
       }
     ]
   },
   {
-    path: '/profile',
+    path: '/shoudian-management',
     component: Layout,
-    redirect: '/profile/index',
-    hidden: true,
+    meta: { title: '售电管理', icon: '', affix: true },
+    alwaysShow:true,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
+        path: 'add-sale',
+        component: () => import('@/views/shoudian-management/add-sale/index'),
+        name: 'DianAddSale',
+        meta: { title: '新增售电', icon: '', affix: true }
+      },
+      {
+        path: 'add-chongzheng',
+        component: () => import('@/views/shoudian-management/add-chongzheng/index'),
+        name: 'AddChongzheng',
+        meta: { title: '新增充正', icon: '', affix: true }
+      },
+      {
+        path: 'add-back',
+        component: () => import('@/views/shoudian-management/add-back/index'),
+        name: 'DianAddBack',
+        meta: { title: '新增退电', icon: '', affix: true }
+      },
+      {
+        path: 'search',
+        component: () => import('@/views/shoudian-management/search/index'),
+        name: 'DianSearch',
+        meta: { title: '售电查询', icon: '', affix: true }
+      },     
+    ]
+  },
+  {
+    path: '/shoushui-management',
+    component: Layout,
+    meta: { title: '售水管理', icon: '', affix: true },
+    alwaysShow:true,
+    children: [
+      {
+        path: 'add-sale',
+        component: () => import('@/views/shoushui-management/add-sale/index'),
+        name: 'ShuiAddSale',
+        meta: { title: '新增售水', icon: '', affix: true }
+      },
+      {
+        path: 'add-back',
+        component: () => import('@/views/shoushui-management/add-back/index'),
+        name: 'ShuiAddBack',
+        meta: { title: '新增退水', icon: '', affix: true }
+      },
+      {
+        path: 'search',
+        component: () => import('@/views/shoushui-management/search/index'),
+        name: 'ShuiSearch',
+        meta: { title: '售水查询', icon: '', affix: true }
+      },     
+    ]
+  },
+  {
+    path: '/dian-report',
+    component: Layout,
+    meta: { title: '电报表中心', icon: '', affix: true },
+    alwaysShow:true,
+    children: [
+      {
+        path: 'shilianwangguan',
+        component: () => import('@/views/dian-report/shilianwangguan/index'),
+        name: 'Shilianwangguan',
+        meta: { title: '失联网关报表', icon: '', affix: true }
+      },
+      {
+        path: 'shiliandianbiao',
+        component: () => import('@/views/dian-report/shiliandianbiao/index'),
+        name: 'Shiliandianbiao',
+        meta: { title: '失联电表报表', icon: '', affix: true }
+      },
+      {
+        path: 'dianbiaoshishibaojing',
+        component: () => import('@/views/dian-report/dianbiaoshishibaojing/index'),
+        name: 'Dianbiaoshishibaojing',
+        meta: { title: '电表实时报警报表', icon: '', affix: true }
+      },
+      {
+        path: 'dianbiaobaojingjilulishi',
+        component: () => import('@/views/dian-report/dianbiaobaojingjilulishi/index'),
+        name: 'Dianbiaobaojingjilulishi',
+        meta: { title: '电表报警记录历史报表', icon: '', affix: true }
+      },
+      {
+        path: 'dianxiaoshou',
+        component: () => import('@/views/dian-report/dianxiaoshou/index'),
+        name: 'Dianxiaoshou',
+        meta: { title: '电销售报表', icon: '', affix: true }
+      },
+      {
+        path: 'dianbiaozonghe',
+        component: () => import('@/views/dian-report/dianbiaozonghe/index'),
+        name: 'Dianbiaozonghe',
+        meta: { title: '电表综合报表', icon: '', affix: true }
+      },
+      {
+        path: 'diannenghao',
+        component: () => import('@/views/dian-report/diannenghao/index'),
+        name: 'Diannenghao',
+        meta: { title: '电能耗报表', icon: '', affix: true }
+      },
+      {
+        path: 'guankongdianbiaonenghao',
+        component: () => import('@/views/dian-report/guankongdianbiaonenghao/index'),
+        name: 'Guankongdianbiaonenghao',
+        meta: { title: '管控电表能耗报表', icon: '', affix: true }
+      },
+      {
+        path: 'guankongdianbiaodiancanliang',
+        component: () => import('@/views/dian-report/guankongdianbiaodiancanliang/index'),
+        name: 'Guankongdianbiaodiancanliang',
+        meta: { title: '管控电表电参量监控', icon: '', affix: true }
+      },
+      {
+        path: 'diancanliangjiankong',
+        component: () => import('@/views/dian-report/diancanliangjiankong/index'),
+        name: 'Diancanliangjiankong',
+        meta: { title: '电参量监控', icon: '', affix: true }
+      },
+      {
+        path: 'fufeilv',
+        component: () => import('@/views/dian-report/fufeilv/index'),
+        name: 'Fufeilv',
+        meta: { title: '复费率报表', icon: '', affix: true }
+      },
+      {
+        path: 'dianfeishouyi',
+        component: () => import('@/views/dian-report/dianfeishouyi/index'),
+        name: 'Dianfeishouyi',
+        meta: { title: '电费收益报表', icon: '', affix: true }
+      },
+      {
+        path: 'sunhaofenxi',
+        component: () => import('@/views/dian-report/sunhaofenxi/index'),
+        name: 'Sunhaofenxi',
+        meta: { title: '损耗分析报表', icon: '', affix: true }
       }
     ]
-  }
+  },
+  {
+    path: '/shui-report',
+    component: Layout,
+    meta: { title: '水报表中心', icon: '', affix: true },
+    alwaysShow:true,
+    children: [
+      {
+        path: 'shuibiaoshishibaojing',
+        component: () => import('@/views/shui-report/shuibiaoshishibaojing/index'),
+        name: 'Shuibiaoshishibaojing',
+        meta: { title: '水表实时报警报表', icon: '', affix: true }
+      },
+      {
+        path: 'shuixiaoshou',
+        component: () => import('@/views/shui-report/shuixiaoshou/index'),
+        name: 'Shuixiaoshou',
+        meta: { title: '水销售报表', icon: '', affix: true }
+      },
+      {
+        path: 'shuibiaozonghe',
+        component: () => import('@/views/shui-report/shuibiaozonghe/index'),
+        name: 'Shuibiaozonghe',
+        meta: { title: '水表综合报表', icon: '', affix: true }
+      },
+      {
+        path: 'shuibiaoshilian',
+        component: () => import('@/views/shui-report/shuibiaoshilian/index'),
+        name: 'Shuibiaoshilian',
+        meta: { title: '水表失连报表', icon: '', affix: true }
+      },
+      {
+        path: 'shuigaojingjilulishi',
+        component: () => import('@/views/shui-report/shuigaojingjilulishi/index'),
+        name: 'Shuigaojingjilulishi',
+        meta: { title: '水告警记录历史报表', icon: '', affix: true }
+      },
+    ]
+  },
+  {
+    path: '/property-management',
+    component: Layout,
+    meta: { title: '物业管理', icon: '', affix: true },
+    alwaysShow:true,
+    children: [
+      {
+        path: 'home-management',
+        component: () => import('@/views/property-management/home-management/index'),
+        name: 'HomeManagement',
+        meta: { title: '房间管理', icon: '', affix: true }
+      },
+      {
+        path: 'home-sign',
+        component: () => import('@/views/property-management/home-sign/index'),
+        name: 'HomeSign',
+        meta: { title: '房间签约管理', icon: '', affix: true }
+      },
+      {
+        path: 'balance-changes',
+        component: () => import('@/views/property-management/balance-changes/index'),
+        name: 'BalanceChanges',
+        meta: { title: '余额变更记录', icon: '', affix: true }
+      },
+      {
+        path: 'bill-management',
+        component: () => import('@/views/property-management/bill-management/index'),
+        name: 'BillManagement',
+        meta: { title: '账单管理', icon: '', affix: true }
+      },
+      {
+        path: 'user-info-management',
+        component: () => import('@/views/property-management/user-info-management/index'),
+        name: 'UserInfoManagement',
+        meta: { title: '用户信息管理', icon: '', affix: true }
+      },
+      {
+        path: 'useage-and-balance',
+        component: () => import('@/views/property-management/useage-and-balance/index'),
+        name: 'UseageAndBalance',
+        meta: { title: '使用量和余额概况', icon: '', affix: true }
+      },
+      {
+        path: 'top-up',
+        component: () => import('@/views/property-management/top-up/index'),
+        name: 'TopUp',
+        meta: { title: '充值', icon: '', affix: true }
+      },
+      {
+        path: 'gongtan',
+        component: () => import('@/views/property-management/gongtan/index'),
+        name: 'Gongtan',
+        meta: { title: '公摊仪表管理', icon: '', affix: true }
+      }
+    ]
+  },
 ]
 
 /**
@@ -129,260 +456,6 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  {
-    path: '/permission',
-    component: Layout,
-    redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
-    name: 'Permission',
-    meta: {
-      title: 'Permission',
-      icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
-    },
-    children: [
-      {
-        path: 'page',
-        component: () => import('@/views/permission/page'),
-        name: 'PagePermission',
-        meta: {
-          title: 'Page Permission',
-          roles: ['admin'] // or you can only set roles in sub nav
-        }
-      },
-      {
-        path: 'directive',
-        component: () => import('@/views/permission/directive'),
-        name: 'DirectivePermission',
-        meta: {
-          title: 'Directive Permission'
-          // if do not set roles, means: this page does not require permission
-        }
-      },
-      {
-        path: 'role',
-        component: () => import('@/views/permission/role'),
-        name: 'RolePermission',
-        meta: {
-          title: 'Role Permission',
-          roles: ['admin']
-        }
-      }
-    ]
-  },
-
-  {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/icons/index'),
-        name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
-
-  /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
-
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/list',
-    name: 'Example',
-    meta: {
-      title: 'Example',
-      icon: 'el-icon-s-help'
-    },
-    children: [
-      {
-        path: 'create',
-        component: () => import('@/views/example/create'),
-        name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
-      },
-      {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/example/edit'),
-        name: 'EditArticle',
-        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
-        hidden: true
-      },
-      {
-        path: 'list',
-        component: () => import('@/views/example/list'),
-        name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
-      }
-    ]
-  },
-
-  {
-    path: '/tab',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/tab/index'),
-        name: 'Tab',
-        meta: { title: 'Tab', icon: 'tab' }
-      }
-    ]
-  },
-
-  {
-    path: '/error',
-    component: Layout,
-    redirect: 'noRedirect',
-    name: 'ErrorPages',
-    meta: {
-      title: 'Error Pages',
-      icon: '404'
-    },
-    children: [
-      {
-        path: '401',
-        component: () => import('@/views/error-page/401'),
-        name: 'Page401',
-        meta: { title: '401', noCache: true }
-      },
-      {
-        path: '404',
-        component: () => import('@/views/error-page/404'),
-        name: 'Page404',
-        meta: { title: '404', noCache: true }
-      }
-    ]
-  },
-
-  {
-    path: '/error-log',
-    component: Layout,
-    children: [
-      {
-        path: 'log',
-        component: () => import('@/views/error-log/index'),
-        name: 'ErrorLog',
-        meta: { title: 'Error Log', icon: 'bug' }
-      }
-    ]
-  },
-
-  {
-    path: '/excel',
-    component: Layout,
-    redirect: '/excel/export-excel',
-    name: 'Excel',
-    meta: {
-      title: 'Excel',
-      icon: 'excel'
-    },
-    children: [
-      {
-        path: 'export-excel',
-        component: () => import('@/views/excel/export-excel'),
-        name: 'ExportExcel',
-        meta: { title: 'Export Excel' }
-      },
-      {
-        path: 'export-selected-excel',
-        component: () => import('@/views/excel/select-excel'),
-        name: 'SelectExcel',
-        meta: { title: 'Export Selected' }
-      },
-      {
-        path: 'export-merge-header',
-        component: () => import('@/views/excel/merge-header'),
-        name: 'MergeHeader',
-        meta: { title: 'Merge Header' }
-      },
-      {
-        path: 'upload-excel',
-        component: () => import('@/views/excel/upload-excel'),
-        name: 'UploadExcel',
-        meta: { title: 'Upload Excel' }
-      }
-    ]
-  },
-
-  {
-    path: '/zip',
-    component: Layout,
-    redirect: '/zip/download',
-    alwaysShow: true,
-    name: 'Zip',
-    meta: { title: 'Zip', icon: 'zip' },
-    children: [
-      {
-        path: 'download',
-        component: () => import('@/views/zip/index'),
-        name: 'ExportZip',
-        meta: { title: 'Export Zip' }
-      }
-    ]
-  },
-
-  {
-    path: '/pdf',
-    component: Layout,
-    redirect: '/pdf/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/pdf/index'),
-        name: 'PDF',
-        meta: { title: 'PDF', icon: 'pdf' }
-      }
-    ]
-  },
-  {
-    path: '/pdf/download',
-    component: () => import('@/views/pdf/download'),
-    hidden: true
-  },
-
-  {
-    path: '/theme',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/theme/index'),
-        name: 'Theme',
-        meta: { title: 'Theme', icon: 'theme' }
-      }
-    ]
-  },
-
-  {
-    path: '/clipboard',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/clipboard/index'),
-        name: 'ClipboardDemo',
-        meta: { title: 'Clipboard', icon: 'clipboard' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
-
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

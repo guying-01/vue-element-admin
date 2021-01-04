@@ -1,3 +1,11 @@
+<!--
+ * @Author       : gy
+ * @Date         : 2021-01-04 19:56:52
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-04 22:44:51
+ * @FilePath     : /yufufei/src/components/Breadcrumb/index.vue
+ * @Description  : 页面描述
+-->
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
@@ -36,9 +44,9 @@ export default {
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
       const first = matched[0]
 
-      if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
-      }
+      // if (!this.isDashboard(first)) {
+      //   matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+      // }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
     },

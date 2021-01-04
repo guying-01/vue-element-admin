@@ -1,3 +1,11 @@
+<!--
+ * @Author       : gy
+ * @Date         : 2021-01-04 19:56:52
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-04 20:06:40
+ * @FilePath     : /yufufei/src/layout/components/Sidebar/Logo.vue
+ * @Description  : 页面描述
+-->
 <template>
   <div class="sidebar-logo-container" :class="{'collapse':collapse}">
     <transition name="sidebarLogoFade">
@@ -24,8 +32,8 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Element Admin',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: '预付费云平台',
+      logo: ''
     }
   }
 }

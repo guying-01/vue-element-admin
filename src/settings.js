@@ -1,11 +1,19 @@
+/*
+ * @Author       : gy
+ * @Date         : 2021-01-04 19:56:52
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-04 20:06:03
+ * @FilePath     : /yufufei/src/settings.js
+ * @Description  : 页面描述
+ */
 module.exports = {
-  title: 'Vue Element Admin',
+  title: '预付费云平台',
 
   /**
    * @type {boolean} true | false
    * @description Whether show the settings right-panel
    */
-  showSettings: true,
+  showSettings: false,
 
   /**
    * @type {boolean} true | false
@@ -23,7 +31,7 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
    */
-  sidebarLogo: false,
+  sidebarLogo: true,
 
   /**
    * @type {string | array} 'production' | ['production', 'development']
