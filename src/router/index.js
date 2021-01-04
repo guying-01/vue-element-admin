@@ -83,7 +83,7 @@ export const constantRoutes = [
     path: '/system-management',
     component: Layout,
     meta: { title: '系统配置', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'buildings',
@@ -151,7 +151,7 @@ export const constantRoutes = [
     path: '/user-management',
     component: Layout,
     meta: { title: '用户管理', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'dianbiao-batch-operation',
@@ -188,14 +188,14 @@ export const constantRoutes = [
         component: () => import('@/views/user-management/close-account/index'),
         name: 'CloseAccount',
         meta: { title: '用户销户', icon: '', affix: true }
-      },
+      }
     ]
   },
   {
     path: '/personal-setting',
     component: Layout,
     meta: { title: '个人设置', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'change-password',
@@ -215,7 +215,7 @@ export const constantRoutes = [
     path: '/shoudian-management',
     component: Layout,
     meta: { title: '售电管理', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'add-sale',
@@ -240,14 +240,14 @@ export const constantRoutes = [
         component: () => import('@/views/shoudian-management/search/index'),
         name: 'DianSearch',
         meta: { title: '售电查询', icon: '', affix: true }
-      },     
+      }
     ]
   },
   {
     path: '/shoushui-management',
     component: Layout,
     meta: { title: '售水管理', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'add-sale',
@@ -266,14 +266,14 @@ export const constantRoutes = [
         component: () => import('@/views/shoushui-management/search/index'),
         name: 'ShuiSearch',
         meta: { title: '售水查询', icon: '', affix: true }
-      },     
+      }
     ]
   },
   {
     path: '/dian-report',
     component: Layout,
     meta: { title: '电报表中心', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'shilianwangguan',
@@ -359,7 +359,7 @@ export const constantRoutes = [
     path: '/shui-report',
     component: Layout,
     meta: { title: '水报表中心', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'shuibiaoshishibaojing',
@@ -390,14 +390,14 @@ export const constantRoutes = [
         component: () => import('@/views/shui-report/shuigaojingjilulishi/index'),
         name: 'Shuigaojingjilulishi',
         meta: { title: '水告警记录历史报表', icon: '', affix: true }
-      },
+      }
     ]
   },
   {
     path: '/property-management',
     component: Layout,
     meta: { title: '物业管理', icon: '', affix: true },
-    alwaysShow:true,
+    alwaysShow: true,
     children: [
       {
         path: 'home-management',
@@ -448,7 +448,7 @@ export const constantRoutes = [
         meta: { title: '公摊仪表管理', icon: '', affix: true }
       }
     ]
-  },
+  }
 ]
 
 /**
