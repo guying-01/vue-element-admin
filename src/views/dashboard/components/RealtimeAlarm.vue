@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2021-01-06 14:38:20
- * @LastEditors: gy
- * @LastEditTime: 2021-01-06 16:01:23
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-06 21:29:32
 -->
 <!--  -->
 <template>
@@ -41,7 +41,7 @@ export default {
           text3: "100200.0",
           text4: "欠费",
           text5: "合闸",
-          text6: "正常用电",
+          text6: "正常用电"
         },
         {
           id: "019038016F",
@@ -50,7 +50,7 @@ export default {
           text3: "100200.0",
           text4: "欠费",
           text5: "合闸",
-          text6: "正常用电",
+          text6: "正常用电"
         },
         {
           id: "019038016F",
@@ -59,25 +59,30 @@ export default {
           text3: "100200.0",
           text4: "欠费",
           text5: "合闸",
-          text6: "正常用电",
-        },
-      ],
+          text6: "正常用电"
+        }
+      ]
     };
   },
 
-  methods: {},
+  methods: {}
 };
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .realtime-alarm {
   background-color: #fff;
   .title {
     display: flex;
     justify-content: space-between;
     padding: 14px 15px 7px;
+    color: #31347f;
+    span {
+      cursor: pointer;
+    }
   }
   .content {
     padding: 14px;
+    font-size: 12px;
     .item {
       padding: 7px 7px 7px 17px;
       border: solid 2px #e0e9ef;

@@ -1,15 +1,15 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-01-05 20:47:15
- * @LastEditors: gy
- * @LastEditTime: 2021-01-06 16:13:37
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-06 21:35:34
  * @FilePath     : /yufufei/src/views/dashboard/index.vue
  * @Description  : 页面描述
 -->
 <template>
   <div class="dashboard-editor-container">
     <el-row :gutter="20">
-      <el-col :span="18">
+      <el-col :span="18" style="padding:20px 0 0 20px">
         <panel-group />
 
         <el-row :gutter="10">
@@ -25,7 +25,11 @@
                 <div class="status-item-num">
                   {{ item.cur }}/{{ item.total }}
                 </div>
-                <el-progress :show-text="false" :stroke-width="15" :percentage="Math.round(item.cur / item.total * 100)" />
+                <el-progress
+                  :show-text="false"
+                  :stroke-width="15"
+                  :percentage="Math.round((item.cur / item.total) * 100)"
+                />
               </div>
             </div>
           </el-col>
@@ -34,28 +38,50 @@
               <div class="title">能耗报表</div>
               <div class="category">
                 <div class="category-item">
-                  <div class="category-item-value">361.45kWh</div>
+                  <div class="category-item-value">
+                    <countTo
+                      :startVal="0"
+                      :endVal="361.45"
+                      :duration="3000"
+                    ></countTo>
+                    <span>kWh</span>
+                  </div>
 
                   <div class="cover">昨日用电</div>
                 </div>
                 <div class="category-item">
-                  <div class="category-item-value">236.78kWh</div>
+                  <div class="category-item-value">
+                    <countTo
+                      :startVal="0"
+                      :endVal="236.78"
+                      :duration="3000"
+                    ></countTo>
+                    <span>kWh</span>
+                  </div>
                   <div class="cover">今日用电</div>
                 </div>
                 <div class="category-item">
-                  <div class="category-item-value">-15.57%</div>
+                  <div class="category-item-value">
+                    <countTo
+                      :startVal="0"
+                      :endVal="-15.57"
+                      :duration="3000"
+                    ></countTo>
+                    <span>%</span>
+                  </div>
                   <div class="cover">同比增长</div>
                 </div>
               </div>
-              <div ref="chart" class="chart" />
               <line-chart />
             </div>
           </el-col>
         </el-row>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="6" class="info-box">
+        <div class="box-wrapper">
         <Realtime-Alarm />
         <Lost-In-Information />
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -65,8 +91,9 @@
 import PanelGroup from "./components/PanelGroup";
 import LineChart from "./components/LineChart";
 import RealtimeAlarm from "./components/RealtimeAlarm";
-import LostInInformation from './components/LostInInformation'
+import LostInInformation from "./components/LostInInformation";
 // import TodoList from "./components/TodoList";
+import CountTo from "vue-count-to";
 
 export default {
   name: "DashboardAdmin",
@@ -74,7 +101,8 @@ export default {
     PanelGroup,
     LineChart,
     RealtimeAlarm,
-    LostInInformation
+    LostInInformation,
+    CountTo
   },
   data() {
     return {
@@ -84,17 +112,16 @@ export default {
         { title: "合闸", cur: 9, total: 197 },
         { title: "分闸", cur: 63, total: 197 },
         { title: "强制", cur: 22, total: 197 },
-        { title: "预付费", cur: 99, total: 1970 },
-      ],
+        { title: "预付费", cur: 99, total: 1970 }
+      ]
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
 .dashboard-editor-container {
-  padding: 32px;
   background-color: rgb(240, 242, 245);
   position: relative;
 
@@ -102,6 +129,20 @@ export default {
     background: #fff;
     padding: 16px 16px 0;
     margin-bottom: 32px;
+  }
+
+  .info-box{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right:0;
+    overflow: auto;
+    .box-wrapper{
+      height: 100%;
+      margin-left: 10px;
+      background: #fff;
+    }
+    // width: 100%;
   }
 }
 
@@ -116,7 +157,7 @@ export default {
     float: left;
     border-right: 1px solid #dee6f1;
     border-bottom: 1px solid #dee6f1;
-    padding: 30px 25px;
+    padding: 40px 25px;
   }
 
   .category {

@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2021-01-06 14:48:26
- * @LastEditors: gy
- * @LastEditTime: 2021-01-06 16:04:02
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-01-06 21:30:03
 -->
 <!--  -->
 <template>
@@ -102,11 +102,16 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 14px 15px 7px;
+    color:#31347f;
+    span{
+      cursor: pointer;
+    }
   }
 
   .switch {
     display: flex;
     justify-content: flex-end;
+    font-size: 12px;
     p {
       background-color: #fff;
       border: 1px solid #949de4;
@@ -124,6 +129,7 @@ export default {
 
   .content{
     padding: 14px;
+    font-size: 12px;
   }
 }
 </style>
