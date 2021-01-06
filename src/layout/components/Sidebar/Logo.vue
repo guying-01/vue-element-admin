@@ -1,8 +1,8 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-01-04 19:56:52
- * @LastEditors  : gy
- * @LastEditTime : 2021-01-04 20:06:40
+ * @LastEditors: gy
+ * @LastEditTime: 2021-01-06 14:29:20
  * @FilePath     : /yufufei/src/layout/components/Sidebar/Logo.vue
  * @Description  : 页面描述
 -->
@@ -23,19 +23,19 @@
 
 <script>
 export default {
-  name: 'SidebarLogo',
-  props: {
-    collapse: {
-      type: Boolean,
-      required: true
-    }
-  },
-  data() {
-    return {
-      title: '预付费云平台',
-      logo: ''
-    }
+ name: 'SidebarLogo',
+ props: {
+  collapse: {
+   type: Boolean,
+   required: true
   }
+ },
+ data() {
+  return {
+   title: '预付费云平台',
+   logo: ''
+  }
+ }
 }
 </script>
 

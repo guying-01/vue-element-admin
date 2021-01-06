@@ -1,50 +1,61 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-01-05 20:47:15
- * @LastEditors  : gy
- * @LastEditTime : 2021-01-05 22:43:02
+ * @LastEditors: gy
+ * @LastEditTime: 2021-01-06 16:13:37
  * @FilePath     : /yufufei/src/views/dashboard/index.vue
  * @Description  : 页面描述
 -->
 <template>
   <div class="dashboard-editor-container">
-    <panel-group />
+    <el-row :gutter="20">
+      <el-col :span="18">
+        <panel-group />
 
-    <el-row :gutter="10">
-      <el-col :xs="8" :sm="8" :lg="8">
-        <div class="status border-top">
-          <div class="title">电表状态</div>
-          <div
-            class="status-item"
-            v-for="(item, index) in statuList"
-            :key="index"
-          >
-            <div class="status-item-title">{{ item.title }}</div>
-            <div class="status-item-num">{{ item.cur }}/{{ item.total }}</div>
-          </div>
-        </div>
+        <el-row :gutter="10">
+          <el-col :xs="8" :sm="8" :lg="8">
+            <div class="status border-top">
+              <div class="title">电表状态</div>
+              <div
+                v-for="(item, index) in statuList"
+                :key="index"
+                class="status-item"
+              >
+                <div class="status-item-title">{{ item.title }}</div>
+                <div class="status-item-num">
+                  {{ item.cur }}/{{ item.total }}
+                </div>
+                <el-progress :show-text="false" :stroke-width="15" :percentage="Math.round(item.cur / item.total * 100)" />
+              </div>
+            </div>
+          </el-col>
+          <el-col :xs="16" :sm="16" :lg="16">
+            <div class="report border-top">
+              <div class="title">能耗报表</div>
+              <div class="category">
+                <div class="category-item">
+                  <div class="category-item-value">361.45kWh</div>
+
+                  <div class="cover">昨日用电</div>
+                </div>
+                <div class="category-item">
+                  <div class="category-item-value">236.78kWh</div>
+                  <div class="cover">今日用电</div>
+                </div>
+                <div class="category-item">
+                  <div class="category-item-value">-15.57%</div>
+                  <div class="cover">同比增长</div>
+                </div>
+              </div>
+              <div ref="chart" class="chart" />
+              <line-chart />
+            </div>
+          </el-col>
+        </el-row>
       </el-col>
-      <el-col :xs="16" :sm="16" :lg="16">
-        <div class="report border-top">
-          <div class="title">能耗报表</div>
-          <div class="category">
-            <div class="category-item">
-              <div class="category-item-value">361.45kWh</div>
-
-              <div class="cover">昨日用电</div>
-            </div>
-            <div class="category-item">
-              <div class="category-item-value">236.78kWh</div>
-              <div class="cover">今日用电</div>
-            </div>
-            <div class="category-item">
-              <div class="category-item-value">-15.57%</div>
-              <div class="cover">同比增长</div>
-            </div>
-          </div>
-          <div class="chart" ref="chart"></div>
-          <line-chart />
-        </div>
+      <el-col :span="6">
+        <Realtime-Alarm />
+        <Lost-In-Information />
       </el-col>
     </el-row>
   </div>
@@ -53,30 +64,31 @@
 <script>
 import PanelGroup from "./components/PanelGroup";
 import LineChart from "./components/LineChart";
-import TransactionTable from "./components/TransactionTable";
-import TodoList from "./components/TodoList";
+import RealtimeAlarm from "./components/RealtimeAlarm";
+import LostInInformation from './components/LostInInformation'
+// import TodoList from "./components/TodoList";
 
 export default {
   name: "DashboardAdmin",
   components: {
     PanelGroup,
     LineChart,
-    TransactionTable,
-    TodoList
+    RealtimeAlarm,
+    LostInInformation
   },
   data() {
     return {
       statuList: [
         { title: "未开户", cur: 99, total: 197 },
-        { title: "失联", cur: 99, total: 197 },
-        { title: "合闸", cur: 99, total: 197 },
-        { title: "分闸", cur: 99, total: 197 },
-        { title: "强制", cur: 99, total: 197 },
-        { title: "预付费", cur: 99, total: 197 }
-      ]
+        { title: "失联", cur: 29, total: 197 },
+        { title: "合闸", cur: 9, total: 197 },
+        { title: "分闸", cur: 63, total: 197 },
+        { title: "强制", cur: 22, total: 197 },
+        { title: "预付费", cur: 99, total: 1970 },
+      ],
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 
