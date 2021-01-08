@@ -2,7 +2,7 @@
  * @Author       : gy
  * @Date         : 2021-01-04 20:30:12
  * @LastEditors: gy
- * @LastEditTime: 2021-01-07 16:42:31
+ * @LastEditTime: 2021-01-08 16:12:48
  * @FilePath     : /yufufei/src/views/user-management/dianbiao-batch-operation/index.vue
  * @Description  : 页面描述
 -->
@@ -106,17 +106,17 @@
 
     <div class="operation">
       <el-button-group>
-        <el-button type="primary" size="mini">电价设置</el-button>
-        <el-button type="primary" size="mini">阶梯电价设置</el-button>
-        <el-button type="primary" size="mini">报警设置</el-button>
-        <el-button type="primary" size="mini">强制合闸</el-button>
-        <el-button type="primary" size="mini">强制拉闸</el-button>
-        <el-button type="primary" size="mini">恢复预付费</el-button>
-        <el-button type="primary" size="mini">功率阈值设置</el-button>
-        <el-button type="primary" size="mini">抄表导出</el-button>
-        <el-button type="primary" size="mini">下发报警短信</el-button>
-        <el-button type="primary" size="mini">刷新表状态</el-button>
-        <el-button type="primary" size="mini">历史抄表记录</el-button>
+        <el-button type="primary" size="mini" @click="visible1 = true">电价设置</el-button>
+        <el-button type="primary" size="mini" @click="visible2 = true">阶梯电价设置</el-button>
+        <el-button type="primary" size="mini" @click="visible3 = true">报警设置</el-button>
+        <el-button type="primary" size="mini" @click="handleOperate(1)">强制合闸</el-button>
+        <el-button type="primary" size="mini" @click="handleOperate(2)">强制拉闸</el-button>
+        <el-button type="primary" size="mini" @click="handleOperate(3)">恢复预付费</el-button>
+        <el-button type="primary" size="mini" @click="visible4 = true">功率阈值设置</el-button>
+        <el-button type="primary" size="mini" @click="exportExcel">抄表导出</el-button>
+        <el-button type="primary" size="mini" @click="sendMsg">下发报警短信</el-button>
+        <el-button type="primary" size="mini" @click="refreshTable">刷新表状态</el-button>
+        <el-button type="primary" size="mini" @click="visible6 = true">历史抄表记录</el-button>
       </el-button-group>
     </div>
 
@@ -151,32 +151,56 @@
           <span>合并计算</span>
         </div>
       </div>
+
+      <el-table :data="tableData" :row-class-name="getRowClassName" @selection-change="handleSelectionChange">
+        <el-table-column label="" type="selection" />
+        <el-table-column label="仪表编号" prop="field1" />
+        <el-table-column label="商铺号" prop="field2" />
+        <el-table-column label="用户编号" prop="field3" />
+        <el-table-column label="用户名" prop="field4" />
+        <el-table-column label="购电总额" prop="field5" />
+        <el-table-column label="购电次数" prop="field6" />
+        <el-table-column label="告警金额1" prop="field7" />
+        <el-table-column label="告警金额2" prop="field8" />
+        <el-table-column label="功率阈值(KW)" prop="field9" />
+        <el-table-column label="尖电价" prop="field10" />
+        <el-table-column label="峰电价" prop="field11" />
+      </el-table>
     </div>
 
-    <el-table :data="tableData" :row-class-name="getRowClassName">
-      <el-table-column label="仪表编号" prop="field1" />
-      <el-table-column label="商铺号" prop="field2" />
-      <el-table-column label="用户编号" prop="field3" />
-      <el-table-column label="用户名" prop="field4" />
-      <el-table-column label="购电总额" prop="field5" />
-      <el-table-column label="购电次数" prop="field6" />
-      <el-table-column label="告警金额1" prop="field7" />
-      <el-table-column label="告警金额2" prop="field8" />
-      <el-table-column label="功率阈值(KW)" prop="field9" />
-      <el-table-column label="尖电价" prop="field10" />
-      <el-table-column label="峰电价" prop="field11" />
-    </el-table>
+    <Dianjiashezhi />
+    <Jietidianjiashezhi />
+    <Baojingshezhi />
+    <Lishichaobiaojilu />
   </div>
 </template>
 
 <script>
 import FilterPanel from "@/components/FilterPanel/";
+import Dianjiashezhi from "./modules/dianjiashezhi";
+import Jietidianjiashezhi from "./modules/jietidianjiashezhi.vue";
+import Baojingshezhi from "./modules/baojingshezhi.vue";
+import {downFile} from '@/utils/index'
+import Lishichaobiaojilu from './modules/lishichaobiaojilu.vue';
 export default {
   name: "UserManagementDianbiaoBatchOperation",
-  components: { FilterPanel },
+  components: { FilterPanel, Dianjiashezhi, Jietidianjiashezhi, Baojingshezhi, Lishichaobiaojilu },
   props: {},
+  provide() {
+    return {
+      parent: this,
+    };
+  },
   data() {
     return {
+      selection:[],
+      operationIndex:0,
+      visible1: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      visible5: false,
+      visible6: false,
       data: [
         {
           label: "一级 1",
@@ -317,12 +341,59 @@ export default {
     getRowClassName({ row }) {
       return this.colorMap[row["status"]];
     },
+    /**
+     * @description: 下发预警短信
+     * @param {*}
+     * @return {*}
+     */
+    sendMsg() {
+      //request
+      this.$message({ type: "error", message: "下发失败" });
+    },
+    /**
+     * @description: 刷新表状态
+     * @param {*}
+     * @return {*}
+     */
+    refreshTable() {
+      //request
+      this.$message({ type: "success", message: "刷新成功" });
+    },
+    /**
+     * @description: 抄表导出
+     * @param {*}
+     * @return {*}
+     */
+    exportExcel() {
+      //请求返回流后下载
+      const blob = []
+      downFile(blob,'电表.xlsx')
+    },
+    /**
+     * @description: 表格选中项改变
+     * @param {*} selection
+     * @return {*}
+     */
+    handleSelectionChange(selection){
+      this.selection = selection
+    },
+    handleOperate(idx){
+      this.operationIndex = idx
+      if(this.selection.length == 0){
+        return this.$message({type:'error',message:'请至少选择一项'})
+      }
+      this.visible5 = true
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.operation {
+  padding: 0 20px;
+}
 .list {
+  padding: 0 20px;
   .row-status {
     display: flex;
     justify-content: flex-end;
