@@ -2,7 +2,7 @@
  * @Author       : gy
  * @Date         : 2021-01-04 20:30:12
  * @LastEditors: gy
- * @LastEditTime: 2021-01-08 16:12:48
+ * @LastEditTime: 2021-01-11 11:17:12
  * @FilePath     : /yufufei/src/views/user-management/dianbiao-batch-operation/index.vue
  * @Description  : 页面描述
 -->
@@ -25,7 +25,7 @@
                 <el-row>
                   <el-col :span="12">
                     <el-form-item label="剩余金额:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop1">
                         <el-radio label="全部" />
                         <el-radio label="低于或等于0" />
                         <el-radio label="大于0" />
@@ -34,7 +34,7 @@
                   </el-col>
                   <el-col :span="12">
                     <el-form-item label="联网状态:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop2">
                         <el-radio label="全部" />
                         <el-radio label="在线" />
                         <el-radio label="失联" />
@@ -46,7 +46,7 @@
                 <el-row>
                   <el-col :span="12">
                     <el-form-item label="合闸状态:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop3">
                         <el-radio label="全部" />
                         <el-radio label="合闸" />
                         <el-radio label="拉闸" />
@@ -55,7 +55,7 @@
                   </el-col>
                   <el-col :span="12">
                     <el-form-item label="电表模式:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop4">
                         <el-radio label="全部" />
                         <el-radio label="预付费模式" />
                         <el-radio label="强制模式" />
@@ -67,7 +67,7 @@
                 <el-row>
                   <el-col :span="12">
                     <el-form-item label="开户状态:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop5">
                         <el-radio label="全部" />
                         <el-radio label="已开户" />
                         <el-radio label="未开户" />
@@ -76,7 +76,7 @@
                   </el-col>
                   <el-col :span="12">
                     <el-form-item label="告警状态:">
-                      <el-radio-group v-model="form.resource">
+                      <el-radio-group v-model="form.prop6">
                         <el-radio label="报警1" />
                         <el-radio label="报警2" />
                         <el-radio label="欠费" />
@@ -88,14 +88,21 @@
                 <el-row>
                   <el-col :span="12">
                     <el-form-item label="仪表编号:">
-                      <el-input placeholder="仪表编号" />
+                      <el-input v-model="form.prop7" placeholder="仪表编号" />
                     </el-form-item>
                   </el-col>
                   <el-col :span="12">
                     <el-form-item label="商铺号:">
-                      <el-input placeholder="商铺号" />
+                      <el-input v-model="form.prop8" placeholder="商铺号" />
                     </el-form-item>
                   </el-col>
+                </el-row>
+
+                <el-row>
+                  <div style="float: right">
+                    <el-button type="primary" @click="handleSearch">查询</el-button>
+                    <el-button type="warning" @click="handleReset">清除搜索条件</el-button>
+                  </div>
                 </el-row>
               </el-form>
             </el-col>
@@ -106,17 +113,72 @@
 
     <div class="operation">
       <el-button-group>
-        <el-button type="primary" size="mini" @click="visible1 = true">电价设置</el-button>
-        <el-button type="primary" size="mini" @click="visible2 = true">阶梯电价设置</el-button>
-        <el-button type="primary" size="mini" @click="visible3 = true">报警设置</el-button>
-        <el-button type="primary" size="mini" @click="handleOperate(1)">强制合闸</el-button>
-        <el-button type="primary" size="mini" @click="handleOperate(2)">强制拉闸</el-button>
-        <el-button type="primary" size="mini" @click="handleOperate(3)">恢复预付费</el-button>
-        <el-button type="primary" size="mini" @click="visible4 = true">功率阈值设置</el-button>
-        <el-button type="primary" size="mini" @click="exportExcel">抄表导出</el-button>
-        <el-button type="primary" size="mini" @click="sendMsg">下发报警短信</el-button>
-        <el-button type="primary" size="mini" @click="refreshTable">刷新表状态</el-button>
-        <el-button type="primary" size="mini" @click="visible6 = true">历史抄表记录</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-edit"
+          @click="visible1 = true"
+        >电价设置</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-share"
+          @click="visible2 = true"
+        >阶梯电价设置</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-s-tools"
+          @click="visible3 = true"
+        >报警设置</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-circle-close"
+          @click="handleOperate(1)"
+        >强制合闸</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-circle-check"
+          @click="handleOperate(2)"
+        >强制拉闸</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-d-arrow-left"
+          @click="handleOperate(3)"
+        >恢复预付费</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-setting"
+          @click="visible4 = true"
+        >功率阈值设置</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-download"
+          @click="exportExcel"
+        >抄表导出</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-upload"
+          @click="sendMsg"
+        >下发报警短信</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-refresh"
+          @click="refreshTable"
+        >刷新表状态</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-notebook-2"
+          @click="visible6 = true"
+        >历史抄表记录</el-button>
       </el-button-group>
     </div>
 
@@ -152,7 +214,11 @@
         </div>
       </div>
 
-      <el-table :data="tableData" :row-class-name="getRowClassName" @selection-change="handleSelectionChange">
+      <el-table
+        :data="tableData"
+        :row-class-name="getRowClassName"
+        @selection-change="handleSelectionChange"
+      >
         <el-table-column label="" type="selection" />
         <el-table-column label="仪表编号" prop="field1" />
         <el-table-column label="商铺号" prop="field2" />
@@ -180,11 +246,17 @@ import FilterPanel from "@/components/FilterPanel/";
 import Dianjiashezhi from "./modules/dianjiashezhi";
 import Jietidianjiashezhi from "./modules/jietidianjiashezhi.vue";
 import Baojingshezhi from "./modules/baojingshezhi.vue";
-import {downFile} from '@/utils/index'
-import Lishichaobiaojilu from './modules/lishichaobiaojilu.vue';
+import { downFile } from "@/utils/index";
+import Lishichaobiaojilu from "./modules/lishichaobiaojilu.vue";
 export default {
   name: "UserManagementDianbiaoBatchOperation",
-  components: { FilterPanel, Dianjiashezhi, Jietidianjiashezhi, Baojingshezhi, Lishichaobiaojilu },
+  components: {
+    FilterPanel,
+    Dianjiashezhi,
+    Jietidianjiashezhi,
+    Baojingshezhi,
+    Lishichaobiaojilu,
+  },
   props: {},
   provide() {
     return {
@@ -193,8 +265,8 @@ export default {
   },
   data() {
     return {
-      selection:[],
-      operationIndex:0,
+      selection: [],
+      operationIndex: 0,
       visible1: false,
       visible2: false,
       visible3: false,
@@ -366,24 +438,30 @@ export default {
      */
     exportExcel() {
       //请求返回流后下载
-      const blob = []
-      downFile(blob,'电表.xlsx')
+      const blob = [];
+      downFile(blob, "电表.xlsx");
     },
     /**
      * @description: 表格选中项改变
      * @param {*} selection
      * @return {*}
      */
-    handleSelectionChange(selection){
-      this.selection = selection
+    handleSelectionChange(selection) {
+      this.selection = selection;
     },
-    handleOperate(idx){
-      this.operationIndex = idx
-      if(this.selection.length == 0){
-        return this.$message({type:'error',message:'请至少选择一项'})
+    handleOperate(idx) {
+      this.operationIndex = idx;
+      if (this.selection.length == 0) {
+        return this.$message({ type: "error", message: "请至少选择一项" });
       }
-      this.visible5 = true
-    }
+      this.visible5 = true;
+    },
+    handleSearch() {
+      this.$message({ type: "success", message: "操作成功" });
+    },
+    handleReset() {
+      this.form = {};
+    },
   },
 };
 </script>
@@ -393,6 +471,7 @@ export default {
   padding: 0 20px;
 }
 .list {
+  margin-top: 20px;
   padding: 0 20px;
   .row-status {
     display: flex;
@@ -405,25 +484,32 @@ export default {
         height: 15px;
         margin-right: 3px;
         &.ykh {
-          background-color: lightblue;
+          background-color: #03a9f4;
+          color: #fff;
         }
         &.bj1 {
-          background-color: #fff100;
+          background-color: #ffc107;
+          color: #fff;
         }
         &.bj2 {
-          background-color: #ec1616;
+          background-color: #ff5722;
+          color: #fff;
         }
         &.qf {
-          background-color: #a332d8;
+          background-color: #9c27b0;
+          color: #fff;
         }
         &.wkh {
           background-color: #adadad;
+          color: #fff;
         }
         &.sl {
-          background-color: lightgreen;
+          background-color: #4caf50;
+          color: #fff;
         }
         &.hbjs {
-          background-color: #50a9e1;
+          background-color: #8bc34a;
+          color: #fff;
         }
       }
     }
@@ -434,19 +520,19 @@ export default {
 <style lang="scss">
 .el-table {
   .ykh {
-    background-color: lightblue;
+    background-color: #03a9f4;
     color: #fff;
   }
   .bj1 {
-    background-color: #fff100;
+    background-color: #ffc107;
     color: #fff;
   }
   .bj2 {
-    background-color: #ec1616;
+    background-color: #ff5722;
     color: #fff;
   }
   .qf {
-    background-color: #a332d8;
+    background-color: #9c27b0;
     color: #fff;
   }
   .wkh {
@@ -454,11 +540,11 @@ export default {
     color: #fff;
   }
   .sl {
-    background-color: lightgreen;
+    background-color: #4caf50;
     color: #fff;
   }
   .hbjs {
-    background-color: #50a9e1;
+    background-color: #8bc34a;
     color: #fff;
   }
 }
