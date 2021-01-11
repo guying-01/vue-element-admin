@@ -1,3 +1,9 @@
+<!--
+ * @Author: gy
+ * @Date: 2021-01-04 16:12:38
+ * @LastEditors: gy
+ * @LastEditTime: 2021-01-11 11:49:51
+-->
 <template>
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
@@ -23,12 +29,19 @@ import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
+import { asyncRoutes, constantRoutes } from '@/router'
+
 
 export default {
   components: { SidebarItem, Logo },
+  data(){
+    return {
+      permission_routes:[]
+    }
+  },
   computed: {
     ...mapGetters([
-      'permission_routes',
+      // 'permission_routes',
       'sidebar'
     ]),
     activeMenu() {
@@ -49,6 +62,9 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  created(){
+    this.permission_routes = constantRoutes
   }
 }
 </script>

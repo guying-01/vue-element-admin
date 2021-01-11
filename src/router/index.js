@@ -157,7 +157,7 @@ export const constantRoutes = [
         path: 'dianbiao-batch-operation',
         component: () => import('@/views/user-management/dianbiao-batch-operation/index'),
         name: 'DianbiaoBatchOperation',
-        meta: { title: '电表批量操作', icon: '', affix: false }
+        meta: { title: '电表批量操作', icon: '', affix: true }
       },
       {
         path: 'open-account',

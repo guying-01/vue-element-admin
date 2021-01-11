@@ -2,7 +2,7 @@
  * @Author       : gy
  * @Date         : 2021-01-04 20:30:12
  * @LastEditors: gy
- * @LastEditTime: 2021-01-11 11:17:12
+ * @LastEditTime: 2021-01-11 13:38:05
  * @FilePath     : /yufufei/src/views/user-management/dianbiao-batch-operation/index.vue
  * @Description  : 页面描述
 -->
@@ -468,6 +468,7 @@ export default {
 
 <style lang="scss" scoped>
 .operation {
+  margin-top: 20px;
   padding: 0 20px;
 }
 .list {

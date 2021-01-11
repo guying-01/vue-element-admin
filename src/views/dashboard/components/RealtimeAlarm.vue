@@ -1,15 +1,15 @@
 <!--
  * @Author: gy
  * @Date: 2021-01-06 14:38:20
- * @LastEditors  : gy
- * @LastEditTime : 2021-01-06 21:29:32
+ * @LastEditors: gy
+ * @LastEditTime: 2021-01-11 13:45:31
 -->
 <!--  -->
 <template>
   <div class="realtime-alarm">
     <div class="title">
       <span>实时报警信息</span>
-      <span>查看全部</span>
+      <span @click="$router.push({path:'/dian-report/dianbiaoshishibaojing'})">查看全部</span>
     </div>
     <div class="content">
       <div v-for="(item, index) in list" :key="index" class="item">

@@ -2,12 +2,12 @@
   <div>
     <div class="group-title">快捷入口</div>
     <el-row :gutter="10" class="panel-group">
-      <el-col :xs="4" :sm="4" :lg="4" class="card-panel-col" v-for="(item,index) in entries" :key="index">
-        <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <el-col v-for="(item,index) in entries" :key="index" :xs="4" :sm="4" :lg="4" class="card-panel-col">
+        <div class="card-panel" @click="handleClick(item)">
           <div class="card-panel-icon-wrapper">
-            <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+            <svg-icon :icon-class="item.icon" class-name="card-panel-icon" />
           </div>
-          <div class="card-panel-title">{{item.title}}</div>
+          <div class="card-panel-title">{{ item.title }}</div>
         </div>
       </el-col>
     </el-row>
@@ -15,28 +15,27 @@
 </template>
 
 <script>
-import CountTo from "vue-count-to";
 
 export default {
   components: {
-    CountTo
   },
   data(){
     return {
       entries:[
-        {title:'新增售电',icon:'',link:''},
-        {title:'新增开户',icon:'',link:''},
-        {title:'电表批量操作',icon:'',link:''},
-        {title:'电能耗报表',icon:'',link:''},
-        {title:'水表批量操作',icon:'',link:''},
-        {title:'新增售水',icon:'',link:''},
+        {title:'新增售电',icon:'people',link:'/shoudian-management/add-sale'},
+        {title:'新增开户',icon:'user',link:'/user-management/open-account'},
+        {title:'电表批量操作',icon:'edit',link:'/user-management/dianbiao-batch-operation'},
+        {title:'电能耗报表',icon:'chart',link:'/dian-report/diannenghao'},
+        {title:'水表批量操作',icon:'skill',link:'/user-management/shuibiao-batch-operation'},
+        {title:'新增售水',icon:'example',link:'/shoushui-management/add-sale'},
 
       ]
     }
   },
   methods: {
-    handleSetLineChartData(type) {
-      this.$emit("handleSetLineChartData", type);
+    handleClick({link}){
+      if(!link) return 
+      this.$router.push({path:link})
     }
   }
 };

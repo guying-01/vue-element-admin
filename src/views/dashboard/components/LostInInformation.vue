@@ -1,15 +1,15 @@
 <!--
  * @Author: gy
  * @Date: 2021-01-06 14:48:26
- * @LastEditors  : gy
- * @LastEditTime : 2021-01-06 21:30:03
+ * @LastEditors: gy
+ * @LastEditTime: 2021-01-11 13:52:41
 -->
 <!--  -->
 <template>
   <div class="lost-in-information">
     <div class="title">
       <span>失联信息</span>
-      <span>查看全部</span>
+      <span @click="$router.push({path:'/dian-report/shiliandianbiao'})">查看全部</span>
     </div>
     <div class="switch">
       <p :class="[activeIndex == 1 ? 'active' : '']" @click="activeIndex = 1">
@@ -112,7 +112,9 @@ export default {
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
+    align-items: center;
     p {
+      cursor: pointer;
       background-color: #fff;
       border: 1px solid #949de4;
       border-radius: 6px;
@@ -130,6 +132,7 @@ export default {
   .content{
     padding: 14px;
     font-size: 12px;
+    overflow: auto;
   }
 }
 </style>
