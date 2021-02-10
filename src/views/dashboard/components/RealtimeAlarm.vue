@@ -35,38 +35,38 @@ export default {
     return {
       list: [
         {
-          id: "019038016F",
-          text1: "111",
-          text2: "1366.92",
-          text3: "100200.0",
-          text4: "欠费",
-          text5: "合闸",
-          text6: "正常用电"
+          id: '019038016F',
+          text1: '111',
+          text2: '1366.92',
+          text3: '100200.0',
+          text4: '欠费',
+          text5: '合闸',
+          text6: '正常用电'
         },
         {
-          id: "019038016F",
-          text1: "111",
-          text2: "1366.92",
-          text3: "100200.0",
-          text4: "欠费",
-          text5: "合闸",
-          text6: "正常用电"
+          id: '019038016F',
+          text1: '111',
+          text2: '1366.92',
+          text3: '100200.0',
+          text4: '欠费',
+          text5: '合闸',
+          text6: '正常用电'
         },
         {
-          id: "019038016F",
-          text1: "111",
-          text2: "1366.92",
-          text3: "100200.0",
-          text4: "欠费",
-          text5: "合闸",
-          text6: "正常用电"
+          id: '019038016F',
+          text1: '111',
+          text2: '1366.92',
+          text3: '100200.0',
+          text4: '欠费',
+          text5: '合闸',
+          text6: '正常用电'
         }
       ]
-    };
+    }
   },
 
   methods: {}
-};
+}
 </script>
 <style lang="scss" scoped>
 .realtime-alarm {

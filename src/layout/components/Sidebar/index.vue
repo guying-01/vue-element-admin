@@ -31,12 +31,11 @@ import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
 import { asyncRoutes, constantRoutes } from '@/router'
 
-
 export default {
   components: { SidebarItem, Logo },
-  data(){
+  data() {
     return {
-      permission_routes:[]
+      permission_routes: []
     }
   },
   computed: {
@@ -63,7 +62,7 @@ export default {
       return !this.sidebar.opened
     }
   },
-  created(){
+  created() {
     this.permission_routes = constantRoutes
   }
 }

@@ -23,19 +23,19 @@
 
 <script>
 export default {
- name: 'SidebarLogo',
- props: {
-  collapse: {
-   type: Boolean,
-   required: true
+  name: 'SidebarLogo',
+  props: {
+    collapse: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data() {
+    return {
+      title: '预付费云平台',
+      logo: ''
+    }
   }
- },
- data() {
-  return {
-   title: '预付费云平台',
-   logo: ''
-  }
- }
 }
 </script>
 

@@ -26,27 +26,27 @@ export default {
   props: {},
   data() {
     return {
-      isFold: false,
-    };
+      isFold: false
+    }
   },
   watch: {
     isFold: {
       handler(val) {
-        let cont = this.$refs["content"];
+        const cont = this.$refs['content']
         if (val) {
-          cont.style.height = 0 + "px";
+          cont.style.height = 0 + 'px'
         } else {
-          cont.style.height = cont.scrollHeight + "px";
+          cont.style.height = cont.scrollHeight + 'px'
         }
-      },
-    },
+      }
+    }
   },
   mounted() {
-    let cont = this.$refs["content"];
-    cont.style.height = cont.scrollHeight + "px";
+    const cont = this.$refs['content']
+    cont.style.height = cont.scrollHeight + 'px'
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 <style lang='scss' scoped>
 .title {

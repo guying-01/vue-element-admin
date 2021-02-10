@@ -242,26 +242,26 @@
 </template>
 
 <script>
-import FilterPanel from "@/components/FilterPanel/";
-import Dianjiashezhi from "./modules/dianjiashezhi";
-import Jietidianjiashezhi from "./modules/jietidianjiashezhi.vue";
-import Baojingshezhi from "./modules/baojingshezhi.vue";
-import { downFile } from "@/utils/index";
-import Lishichaobiaojilu from "./modules/lishichaobiaojilu.vue";
+import FilterPanel from '@/components/FilterPanel/'
+import Dianjiashezhi from './modules/dianjiashezhi'
+import Jietidianjiashezhi from './modules/jietidianjiashezhi.vue'
+import Baojingshezhi from './modules/baojingshezhi.vue'
+import { downFile } from '@/utils/index'
+import Lishichaobiaojilu from './modules/lishichaobiaojilu.vue'
 export default {
-  name: "UserManagementDianbiaoBatchOperation",
+  name: 'UserManagementDianbiaoBatchOperation',
   components: {
     FilterPanel,
     Dianjiashezhi,
     Jietidianjiashezhi,
     Baojingshezhi,
-    Lishichaobiaojilu,
+    Lishichaobiaojilu
   },
   props: {},
   provide() {
     return {
-      parent: this,
-    };
+      parent: this
+    }
   },
   data() {
     return {
@@ -275,143 +275,143 @@ export default {
       visible6: false,
       data: [
         {
-          label: "一级 1",
+          label: '一级 1',
           children: [
             {
-              label: "二级 1-1",
+              label: '二级 1-1',
               children: [
                 {
-                  label: "三级 1-1-1",
-                },
-              ],
-            },
-          ],
+                  label: '三级 1-1-1'
+                }
+              ]
+            }
+          ]
         },
         {
-          label: "一级 2",
+          label: '一级 2',
           children: [
             {
-              label: "二级 2-1",
+              label: '二级 2-1',
               children: [
                 {
-                  label: "三级 2-1-1",
-                },
-              ],
+                  label: '三级 2-1-1'
+                }
+              ]
             },
             {
-              label: "二级 2-2",
+              label: '二级 2-2',
               children: [
                 {
-                  label: "三级 2-2-1",
-                },
-              ],
-            },
-          ],
+                  label: '三级 2-2-1'
+                }
+              ]
+            }
+          ]
         },
         {
-          label: "一级 3",
+          label: '一级 3',
           children: [
             {
-              label: "二级 3-1",
+              label: '二级 3-1',
               children: [
                 {
-                  label: "三级 3-1-1",
-                },
-              ],
+                  label: '三级 3-1-1'
+                }
+              ]
             },
             {
-              label: "二级 3-2",
+              label: '二级 3-2',
               children: [
                 {
-                  label: "三级 3-2-1",
-                },
-              ],
-            },
-          ],
-        },
+                  label: '三级 3-2-1'
+                }
+              ]
+            }
+          ]
+        }
       ],
       defaultProps: {
-        children: "children",
-        label: "label",
+        children: 'children',
+        label: 'label'
       },
       form: {},
       colorMap: {
-        1: "ykh",
-        2: "bj1",
-        3: "bj2",
-        4: "qf",
-        5: "wkh",
-        6: "sl",
-        7: "hbjs",
+        1: 'ykh',
+        2: 'bj1',
+        3: 'bj2',
+        4: 'qf',
+        5: 'wkh',
+        6: 'sl',
+        7: 'hbjs'
       },
       tableData: [
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
-          status: 1,
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
+          status: 1
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
-          status: 2,
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
+          status: 2
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
-          status: 3,
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
+          status: 3
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
-          status: 4,
-        },
-      ],
-    };
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
+          status: 4
+        }
+      ]
+    }
   },
   created() {},
   mounted() {},
   methods: {
     handleNodeClick(data) {
-      console.log(data);
+      console.log(data)
     },
     getRowClassName({ row }) {
-      return this.colorMap[row["status"]];
+      return this.colorMap[row['status']]
     },
     /**
      * @description: 下发预警短信
@@ -419,8 +419,8 @@ export default {
      * @return {*}
      */
     sendMsg() {
-      //request
-      this.$message({ type: "error", message: "下发失败" });
+      // request
+      this.$message({ type: 'error', message: '下发失败' })
     },
     /**
      * @description: 刷新表状态
@@ -428,8 +428,8 @@ export default {
      * @return {*}
      */
     refreshTable() {
-      //request
-      this.$message({ type: "success", message: "刷新成功" });
+      // request
+      this.$message({ type: 'success', message: '刷新成功' })
     },
     /**
      * @description: 抄表导出
@@ -437,9 +437,9 @@ export default {
      * @return {*}
      */
     exportExcel() {
-      //请求返回流后下载
-      const blob = [];
-      downFile(blob, "电表.xlsx");
+      // 请求返回流后下载
+      const blob = []
+      downFile(blob, '电表.xlsx')
     },
     /**
      * @description: 表格选中项改变
@@ -447,23 +447,23 @@ export default {
      * @return {*}
      */
     handleSelectionChange(selection) {
-      this.selection = selection;
+      this.selection = selection
     },
     handleOperate(idx) {
-      this.operationIndex = idx;
+      this.operationIndex = idx
       if (this.selection.length == 0) {
-        return this.$message({ type: "error", message: "请至少选择一项" });
+        return this.$message({ type: 'error', message: '请至少选择一项' })
       }
-      this.visible5 = true;
+      this.visible5 = true
     },
     handleSearch() {
-      this.$message({ type: "success", message: "操作成功" });
+      this.$message({ type: 'success', message: '操作成功' })
     },
     handleReset() {
-      this.form = {};
-    },
-  },
-};
+      this.form = {}
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

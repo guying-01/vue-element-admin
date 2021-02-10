@@ -23,23 +23,23 @@
 <script>
 export default {
   components: {},
-  inject: ["parent"],
+  inject: ['parent'],
   props: {
   },
   data() {
     return {
       form: {
-        price1: "1",
-      },
-    };
+        price1: '1'
+      }
+    }
   },
   methods: {
     handleConfirm() {
-      this.parent.visible4 = false;
-      this.$message({ type: "success", message: "修改成功" });
-    },
-  },
-};
+      this.parent.visible4 = false
+      this.$message({ type: 'success', message: '修改成功' })
+    }
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>

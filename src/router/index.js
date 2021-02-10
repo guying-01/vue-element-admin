@@ -82,7 +82,7 @@ export const constantRoutes = [
   {
     path: '/system-management',
     component: Layout,
-    meta: { title: '系统配置', icon: ''},
+    meta: { title: '系统配置', icon: '' },
     alwaysShow: true,
     children: [
       {

@@ -52,39 +52,39 @@ export default {
       activeIndex: 1,
       list: [
         {
-          field1: "01924564",
-          field2: "006",
-          field3: "006-1",
-          field4: "失效",
+          field1: '01924564',
+          field2: '006',
+          field3: '006-1',
+          field4: '失效'
         },
         {
-          field1: "01924564",
-          field2: "006",
-          field3: "006-1",
-          field4: "失效",
+          field1: '01924564',
+          field2: '006',
+          field3: '006-1',
+          field4: '失效'
         },
         {
-          field1: "01924564",
-          field2: "006",
-          field3: "006-1",
-          field4: "失效",
-        },
+          field1: '01924564',
+          field2: '006',
+          field3: '006-1',
+          field4: '失效'
+        }
       ],
       list1: [
         {
-          field1: "019045",
-          field2: "2",
-          field3: "10",
-          field4: "",
-          field5: "巨灵水表测试",
-          field6: "失联",
-        },
-      ],
-    };
+          field1: '019045',
+          field2: '2',
+          field3: '10',
+          field4: '',
+          field5: '巨灵水表测试',
+          field6: '失联'
+        }
+      ]
+    }
   },
 
-  methods: {},
-};
+  methods: {}
+}
 </script>
 <style lang='scss' scoped>
 .lost-in-information {

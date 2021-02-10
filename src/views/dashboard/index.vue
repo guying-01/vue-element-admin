@@ -40,10 +40,10 @@
                 <div class="category-item">
                   <div class="category-item-value">
                     <countTo
-                      :startVal="0"
-                      :endVal="361.45"
+                      :start-val="0"
+                      :end-val="361.45"
                       :duration="3000"
-                    ></countTo>
+                    />
                     <span>kWh</span>
                   </div>
 
@@ -52,10 +52,10 @@
                 <div class="category-item">
                   <div class="category-item-value">
                     <countTo
-                      :startVal="0"
-                      :endVal="236.78"
+                      :start-val="0"
+                      :end-val="236.78"
                       :duration="3000"
-                    ></countTo>
+                    />
                     <span>kWh</span>
                   </div>
                   <div class="cover">今日用电</div>
@@ -63,10 +63,10 @@
                 <div class="category-item">
                   <div class="category-item-value">
                     <countTo
-                      :startVal="0"
-                      :endVal="-15.57"
+                      :start-val="0"
+                      :end-val="-15.57"
                       :duration="3000"
-                    ></countTo>
+                    />
                     <span>%</span>
                   </div>
                   <div class="cover">同比增长</div>
@@ -79,8 +79,8 @@
       </el-col>
       <el-col :span="6" class="info-box">
         <div class="box-wrapper">
-        <Realtime-Alarm />
-        <Lost-In-Information />
+          <Realtime-Alarm />
+          <Lost-In-Information />
         </div>
       </el-col>
     </el-row>
@@ -88,15 +88,15 @@
 </template>
 
 <script>
-import PanelGroup from "./components/PanelGroup";
-import LineChart from "./components/LineChart";
-import RealtimeAlarm from "./components/RealtimeAlarm";
-import LostInInformation from "./components/LostInInformation";
+import PanelGroup from './components/PanelGroup'
+import LineChart from './components/LineChart'
+import RealtimeAlarm from './components/RealtimeAlarm'
+import LostInInformation from './components/LostInInformation'
 // import TodoList from "./components/TodoList";
-import CountTo from "vue-count-to";
+import CountTo from 'vue-count-to'
 
 export default {
-  name: "DashboardAdmin",
+  name: 'DashboardAdmin',
   components: {
     PanelGroup,
     LineChart,
@@ -107,17 +107,17 @@ export default {
   data() {
     return {
       statuList: [
-        { title: "未开户", cur: 99, total: 197 },
-        { title: "失联", cur: 29, total: 197 },
-        { title: "合闸", cur: 9, total: 197 },
-        { title: "分闸", cur: 63, total: 197 },
-        { title: "强制", cur: 22, total: 197 },
-        { title: "预付费", cur: 99, total: 1970 }
+        { title: '未开户', cur: 99, total: 197 },
+        { title: '失联', cur: 29, total: 197 },
+        { title: '合闸', cur: 9, total: 197 },
+        { title: '分闸', cur: 63, total: 197 },
+        { title: '强制', cur: 22, total: 197 },
+        { title: '预付费', cur: 99, total: 1970 }
       ]
-    };
+    }
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

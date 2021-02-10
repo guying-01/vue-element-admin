@@ -32,26 +32,26 @@
 <script>
 export default {
   components: {},
-  inject: ["parent"],
+  inject: ['parent'],
   props: {
   },
   data() {
     return {
       form: {
-        price1: "1",
-        price2: "1",
-        price3: "1",
-        price4: "1",
-      },
-    };
+        price1: '1',
+        price2: '1',
+        price3: '1',
+        price4: '1'
+      }
+    }
   },
   methods: {
     handleConfirm() {
-      this.parent.visible1 = false;
-      this.$message({ type: "success", message: "修改成功" });
-    },
-  },
-};
+      this.parent.visible1 = false
+      this.$message({ type: 'success', message: '修改成功' })
+    }
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>

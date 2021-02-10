@@ -127,24 +127,24 @@
 <script>
 export default {
   components: {},
-  inject: ["parent"],
+  inject: ['parent'],
   props: {},
   data() {
     return {
       form: {
-        prop1: "",
-        prop2: "",
-        prop3: "",
-      },
-    };
+        prop1: '',
+        prop2: '',
+        prop3: ''
+      }
+    }
   },
   methods: {
     handleConfirm() {
-      this.parent.visible2 = false;
-      this.$message({ type: "success", message: "修改成功" });
-    },
-  },
-};
+      this.parent.visible2 = false
+      this.$message({ type: 'success', message: '修改成功' })
+    }
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>

@@ -36,95 +36,95 @@
 </template>
 
 <script>
-import { downFile } from '@/utils';
+import { downFile } from '@/utils'
 export default {
 
   components: {},
-  props : {},
-  inject:['parent'],
-  data () {
+  props: {},
+  inject: ['parent'],
+  data() {
     return {
-      form:{},
+      form: {},
       tableData: [
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
           field12: '否',
           field13: '是',
-          field14: '2020-08',
+          field14: '2020-08'
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
           field12: '否',
           field13: '是',
-          field14: '2020-08',
+          field14: '2020-08'
 
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
           field12: '否',
           field13: '是',
-          field14: '2020-08',
+          field14: '2020-08'
 
         },
         {
-          field1: "019047864",
-          field2: "001",
-          field3: "0190070",
-          field4: "未开户",
-          field5: "100.00",
-          field6: "1",
-          field7: "300.00",
-          field8: "45",
-          field9: "54",
-          field10: "1.0000",
-          field11: "1.0000",
+          field1: '019047864',
+          field2: '001',
+          field3: '0190070',
+          field4: '未开户',
+          field5: '100.00',
+          field6: '1',
+          field7: '300.00',
+          field8: '45',
+          field9: '54',
+          field10: '1.0000',
+          field11: '1.0000',
           field12: '否',
           field13: '是',
-          field14: '2020-08',
+          field14: '2020-08'
 
-        },
-      ],
-    };
+        }
+      ]
+    }
   },
 
   methods: {
-    handleSearch(){
-      this.$message({type:'success',message:'操作成功'})
+    handleSearch() {
+      this.$message({ type: 'success', message: '操作成功' })
     },
-    handleExport(){
-      //请求返回流后下载
+    handleExport() {
+      // 请求返回流后下载
       const blob = []
-      downFile(blob,'导出.xlsx')
+      downFile(blob, '导出.xlsx')
     }
   }
 }

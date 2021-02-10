@@ -19,26 +19,26 @@
 export default {
   components: {
   },
-  data(){
+  data() {
     return {
-      entries:[
-        {title:'新增售电',icon:'people',link:'/shoudian-management/add-sale'},
-        {title:'新增开户',icon:'user',link:'/user-management/open-account'},
-        {title:'电表批量操作',icon:'edit',link:'/user-management/dianbiao-batch-operation'},
-        {title:'电能耗报表',icon:'chart',link:'/dian-report/diannenghao'},
-        {title:'水表批量操作',icon:'skill',link:'/user-management/shuibiao-batch-operation'},
-        {title:'新增售水',icon:'example',link:'/shoushui-management/add-sale'},
+      entries: [
+        { title: '新增售电', icon: 'people', link: '/shoudian-management/add-sale' },
+        { title: '新增开户', icon: 'user', link: '/user-management/open-account' },
+        { title: '电表批量操作', icon: 'edit', link: '/user-management/dianbiao-batch-operation' },
+        { title: '电能耗报表', icon: 'chart', link: '/dian-report/diannenghao' },
+        { title: '水表批量操作', icon: 'skill', link: '/user-management/shuibiao-batch-operation' },
+        { title: '新增售水', icon: 'example', link: '/shoushui-management/add-sale' }
 
       ]
     }
   },
   methods: {
-    handleClick({link}){
-      if(!link) return 
-      this.$router.push({path:link})
+    handleClick({ link }) {
+      if (!link) return
+      this.$router.push({ path: link })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -32,19 +32,19 @@
 <script>
 export default {
   components: {},
-  inject: ["parent"],
+  inject: ['parent'],
   props: {},
   data() {
-    return {};
+    return {}
   },
 
   methods: {
-    handleConfirm(){
+    handleConfirm() {
       // parent.operationIndex 1强制合闸 2强制拉闸 3恢复预付费
-      this.$message({type:'success',message:'下发成功'})
+      this.$message({ type: 'success', message: '下发成功' })
     }
-  },
-};
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>

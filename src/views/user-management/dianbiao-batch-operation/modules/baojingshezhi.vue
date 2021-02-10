@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2021-01-08 13:45:27
  * @LastEditors: gy
- * @LastEditTime: 2021-01-08 14:43:03
+ * @LastEditTime: 2021-01-12 14:31:10
 -->
 <!--  -->
 <template>
@@ -26,24 +26,24 @@
 <script>
 export default {
   components: {},
-  inject: ["parent"],
+  inject: ['parent'],
   props: {
   },
   data() {
     return {
       form: {
-        price1: "1",
-        price2: "1",
-      },
-    };
+        price1: '1',
+        price2: '1'
+      }
+    }
   },
   methods: {
     handleConfirm() {
-      this.parent.visible3 = false;
-      this.$message({ type: "success", message: "修改成功" });
-    },
-  },
-};
+      this.parent.visible3 = false
+      this.$message({ type: 'success', message: '修改成功' })
+    }
+  }
+}
 </script>
 <style lang='scss' scoped>
 </style>
