@@ -1,13 +1,13 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-01-04 20:30:12
- * @LastEditors: gy
- * @LastEditTime: 2021-01-11 13:38:05
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-02-16 18:07:29
  * @FilePath     : /yufufei/src/views/user-management/dianbiao-batch-operation/index.vue
  * @Description  : 页面描述
 -->
 <template>
-  <div>
+  <div class="list-page">
     <Filter-Panel>
       <div class="filters">
         <div>
@@ -242,7 +242,7 @@
 </template>
 
 <script>
-import FilterPanel from '@/components/FilterPanel/'
+import TableMixin from '@/mixins/TableCommMixin'
 import Dianjiashezhi from './modules/dianjiashezhi'
 import Jietidianjiashezhi from './modules/jietidianjiashezhi.vue'
 import Baojingshezhi from './modules/baojingshezhi.vue'
@@ -251,12 +251,12 @@ import Lishichaobiaojilu from './modules/lishichaobiaojilu.vue'
 export default {
   name: 'UserManagementDianbiaoBatchOperation',
   components: {
-    FilterPanel,
     Dianjiashezhi,
     Jietidianjiashezhi,
     Baojingshezhi,
     Lishichaobiaojilu
   },
+  mixins:[TableMixin],
   props: {},
   provide() {
     return {

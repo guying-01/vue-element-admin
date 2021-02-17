@@ -1,3 +1,11 @@
+/*
+ * @Author       : gy
+ * @Date         : 2021-01-04 22:54:18
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-02-16 17:18:39
+ * @FilePath     : /yufufei/src/store/modules/app.js
+ * @Description  : 页面描述
+ */
 import Cookies from 'js-cookie'
 
 const state = {
@@ -6,7 +14,7 @@ const state = {
     withoutAnimation: false
   },
   device: 'desktop',
-  size: Cookies.get('size') || 'medium'
+  size: Cookies.get('size') || 'mini'
 }
 
 const mutations = {

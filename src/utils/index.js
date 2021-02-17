@@ -26,6 +26,13 @@ export function downFile(res, fileNamex) {
   }
 }
 
+export function getType(obj){
+  return (obj == null
+    ? String(obj)
+    : Object.prototype.toString.call(obj).replace(/\[object\s+(\w+)\]/i, '$1') || 'Object'
+  ).toLowerCase()
+}
+
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time

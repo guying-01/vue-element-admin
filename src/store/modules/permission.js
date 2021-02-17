@@ -1,3 +1,11 @@
+/*
+ * @Author       : gy
+ * @Date         : 2021-01-04 22:54:18
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-02-16 17:00:27
+ * @FilePath     : /yufufei/src/store/modules/permission.js
+ * @Description  : 页面描述
+ */
 import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
@@ -35,7 +43,7 @@ export function filterAsyncRoutes(routes, roles) {
 }
 
 const state = {
-  routes: [],
+  routes: constantRoutes,
   addRoutes: []
 }
 

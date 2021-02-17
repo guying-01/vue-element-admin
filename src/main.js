@@ -1,10 +1,18 @@
+/*
+ * @Author       : gy
+ * @Date         : 2021-02-16 16:44:27
+ * @LastEditors  : gy
+ * @LastEditTime : 2021-02-16 18:06:49
+ * @FilePath     : /yufufei/src/main.js
+ * @Description  : 页面描述
+ */
 import Vue from 'vue'
 
 import Cookies from 'js-cookie'
 
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
-import Element from 'element-ui'
+import Element, { Table } from 'element-ui'
 import './styles/element-variables.scss'
 import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
 
@@ -19,6 +27,9 @@ import './permission' // permission control
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
+
+import FilterPanel from '@/components/FilterPanel/'
+import CommTable from '@/components/CommTable/'
 
 /**
  * If you don't want to use mock-server
@@ -37,6 +48,9 @@ Vue.use(Element, {
   size: Cookies.get('size') || 'mini' // set element-ui default size
   // locale: enLang // 如果使用中文，无需设置，请删除
 })
+
+Vue.component('FilterPanel',FilterPanel)
+Vue.component('CommTable',CommTable)
 
 // register global utility filters
 Object.keys(filters).forEach(key => {
