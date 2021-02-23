@@ -12,21 +12,22 @@
       :data="tableData"
       :show-summary="showSummary"
       :default-sort="defaultSort"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+      :row-key="rowKeys"
+      :highlight-current-row="highlightCurrentRow"
       @filter-change="filterChange"
       @header-click="headerClick"
       @row-contextmenu="rowContextmenu"
       @row-click="rowClick"
       @select="selectClick"
       @selection-change="selectionChange"
-      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-      :row-key="rowKeys"
       @expand-change="expandChange"
-      :highlight-current-row="highlightCurrentRow"
       @current-change="currentChange"
     >
       <slot />
     </el-table>
     <el-pagination
+      v-if="isPaginationShow"
       :current-page="currentPage"
       :page-sizes="pageSizes"
       :page-size="pageSize"
@@ -36,32 +37,31 @@
       @current-change="handlePageChange"
       @prev-click="handlePageChange"
       @next-click="handlePageChange"
-      v-if="isPaginationShow"
     />
   </div>
 </template>
 
 <script>
-import {getType} from '@/utils/'
+import { getType } from '@/utils/'
 export default {
   components: {},
   props: {
     data: {
       type: Array,
       default: () => {
-        return [];
+        return []
       }
     },
     totalCount: {
       type: Number,
       default: () => {
-        return 0;
+        return 0
       }
     },
     pageSizes: {
       type: Array,
       default: () => {
-        return [15, 50, 100];
+        return [15, 50, 100]
       }
     },
     loading: {
@@ -82,7 +82,7 @@ export default {
     },
     rowKeys: {
       type: String,
-      default: () => ""
+      default: () => ''
     },
     isPaginationHide: {
       type: Boolean,
@@ -101,7 +101,7 @@ export default {
     return {
       isPaginationShow: false,
       columnMap: {},
-      pageCount:0,
+      pageCount: 0,
       curCol: {}, // 当前点击行
       filters: [],
       currentPage: 1,
@@ -110,124 +110,124 @@ export default {
       poper: null,
       defaultSort: this.isDefaultSort
         ? this.isDefaultSort
-        : { prop: "create_time", order: "descending" },
+        : { prop: 'create_time', order: 'descending' },
       popperShow: false,
       reference: null,
       filterEle: null,
-      dataTypes: ""
-    };
-  },
-  created() {
-    if (!this.isPaginationHide) {
-      this.isPaginationShow = true;
-    }
-
-    if (this.staticTable) {
-      this.tableData = this.data.slice(0, this.pageSize);
+      dataTypes: ''
     }
   },
   watch: {
-    totalCount:{
-      handler(val){
-        this.pageCount =  val ? val : this.tableData.length
+    totalCount: {
+      handler(val) {
+        this.pageCount = val || this.tableData.length
       },
-      immediate:true
+      immediate: true
     },
     rowKeys: {
       handler(val) {
-        //console.log(val, "rowKeys");
+        // console.log(val, "rowKeys");
       },
       immediate: true
     },
     filters: {
       handler(val) {
-        this.hasFilters = val.length != 0;
-        this.$emit("filter-change", JSON.parse(JSON.stringify(this.filters)));
+        this.hasFilters = val.length != 0
+        this.$emit('filter-change', JSON.parse(JSON.stringify(this.filters)))
       },
       deep: true
     },
     data(val) {
       if (this.staticTable) {
-        this.tableData = this.data.slice(0, this.pageSize);
+        this.tableData = this.data.slice(0, this.pageSize)
       } else {
-        this.tableData = val;
+        this.tableData = val
       }
+    }
+  },
+  created() {
+    if (!this.isPaginationHide) {
+      this.isPaginationShow = true
+    }
+
+    if (this.staticTable) {
+      this.tableData = this.data.slice(0, this.pageSize)
     }
   },
   methods: {
     selectionChange(selection) {
-      if (getType(this.$listeners["selection-change"]) == "function") {
-        this.$listeners["selection-change"].apply(this, [...arguments]);
+      if (getType(this.$listeners['selection-change']) == 'function') {
+        this.$listeners['selection-change'].apply(this, [...arguments])
       }
 
-      if (getType(this.$listeners["selectionChange"]) == "function") {
-        this.$listeners["selectionChange"].apply(this, [...arguments]);
+      if (getType(this.$listeners['selectionChange']) == 'function') {
+        this.$listeners['selectionChange'].apply(this, [...arguments])
       }
     },
     expandChange() {
-      if (getType(this.$listeners["expand-change"]) == "function") {
-        this.$listeners["expand-change"].apply(this, [...arguments]);
+      if (getType(this.$listeners['expand-change']) == 'function') {
+        this.$listeners['expand-change'].apply(this, [...arguments])
       }
     },
     filterChange() {
-      if (getType(this.$listeners["filter-change"]) == "function") {
-        this.$listeners["filter-change"].apply(this, [...arguments]);
+      if (getType(this.$listeners['filter-change']) == 'function') {
+        this.$listeners['filter-change'].apply(this, [...arguments])
       }
     },
     headerClick() {
-      if (getType(this.$listeners["header-click"]) == "function") {
-        this.$listeners["header-click"].apply(this, [...arguments]);
+      if (getType(this.$listeners['header-click']) == 'function') {
+        this.$listeners['header-click'].apply(this, [...arguments])
       }
     },
     rowClick() {
-      if (getType(this.$listeners["row-click"]) == "function") {
-        this.$listeners["row-click"].apply(this, [...arguments]);
+      if (getType(this.$listeners['row-click']) == 'function') {
+        this.$listeners['row-click'].apply(this, [...arguments])
       }
     },
     selectClick() {
-      if (getType(this.$listeners["select"]) == "function") {
-        this.$listeners["select"].apply(this, [...arguments]);
+      if (getType(this.$listeners['select']) == 'function') {
+        this.$listeners['select'].apply(this, [...arguments])
       }
     },
     currentChange() {
-      if (getType(this.$listeners["current-change"]) == "function") {
-        this.$listeners["current-change"].apply(this, [...arguments]);
+      if (getType(this.$listeners['current-change']) == 'function') {
+        this.$listeners['current-change'].apply(this, [...arguments])
       }
     },
 
     rowContextmenu() {
-      if (getType(this.$listeners["row-contextmenu"]) == "function") {
-        this.$listeners["row-contextmenu"].apply(this, [...arguments]);
+      if (getType(this.$listeners['row-contextmenu']) == 'function') {
+        this.$listeners['row-contextmenu'].apply(this, [...arguments])
       }
     },
     handleSizeChange(num) {
-      this.pageSize = num;
+      this.pageSize = num
       if (this.staticTable) {
-        const start = (this.currentPage - 1) * this.pageSize;
-        this.staticTable = this.data.slice(start, start + this.pageSize);
+        const start = (this.currentPage - 1) * this.pageSize
+        this.staticTable = this.data.slice(start, start + this.pageSize)
       } else {
-        this.$emit("iPagination", {
+        this.$emit('iPagination', {
           pageSize: this.pageSize,
           currentPage: this.currentPage
-        });
+        })
       }
     },
     handlePageChange(page) {
-      //console.log(page);
-      this.currentPage = page;
+      // console.log(page);
+      this.currentPage = page
       if (this.staticTable) {
-        const start = (this.currentPage - 1) * this.pageSize;
-        this.tableData = this.data.slice(start, start + this.pageSize);
+        const start = (this.currentPage - 1) * this.pageSize
+        this.tableData = this.data.slice(start, start + this.pageSize)
         this.pageCount = this.data.length
       } else {
-        this.$emit("iPagination", {
+        this.$emit('iPagination', {
           pageSize: this.pageSize,
           currentPage: this.currentPage
-        });
+        })
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

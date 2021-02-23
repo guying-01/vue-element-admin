@@ -25,8 +25,7 @@
                   range-separator="至"
                   start-placeholder="开始日期"
                   end-placeholder="结束日期"
-                >
-                </el-date-picker>
+                />
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -62,8 +61,8 @@
     <div class="list">
       <comm-table
         :data="tableData"
-        @selection-change="selectionChange"
         :static-table="true"
+        @selection-change="selectionChange"
       >
         <el-table-column label="" type="selection" />
         <el-table-column label="创建日期" prop="field1" width="150" />
@@ -76,9 +75,10 @@
         <el-table-column label="备注" prop="field8" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="success" @click="handleEdit(scope)"
-              >编辑</el-button
-            >
+            <el-button
+              type="success"
+              @click="handleEdit(scope)"
+            >编辑</el-button>
           </template>
         </el-table-column>
       </comm-table>
@@ -86,68 +86,70 @@
     <el-drawer
       :visible="dialogVisible"
       :title="title"
-      @close="dialogVisible = false"
       size="50%"
+      @close="dialogVisible = false"
     >
       <Add ref="addDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="dialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="dialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="dialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="dialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
   </div>
 </template>
 
 <script>
-import TableMixin from "@/mixins/TableCommMixin";
-import Add from "./modules/add";
+import TableMixin from '@/mixins/TableCommMixin'
+import Add from './modules/add'
 export default {
-  name: "SystemManagementDianbiao",
-  props: {},
-  mixins: [TableMixin],
+  name: 'SystemManagementDianbiao',
   components: { Add },
+  mixins: [TableMixin],
+  props: {},
   data() {
     return {
       form: {},
       tableData: [
         {
-          field1: "2021-02-07 01:15:22",
-          field2: "0190080101",
-          field3: "019008",
-          field4: "006",
-          field5: "DDSY1352",
-          field6: "false",
-          field7: "1",
-          field8: "预付费演示箱006-1"
+          field1: '2021-02-07 01:15:22',
+          field2: '0190080101',
+          field3: '019008',
+          field4: '006',
+          field5: 'DDSY1352',
+          field6: 'false',
+          field7: '1',
+          field8: '预付费演示箱006-1'
         },
         {
-          field1: "2021-02-07 01:15:22",
-          field2: "0190080101",
-          field3: "019008",
-          field4: "006",
-          field5: "DDSY1352",
-          field6: "false",
-          field7: "1",
-          field8: "预付费演示箱006-1"
+          field1: '2021-02-07 01:15:22',
+          field2: '0190080101',
+          field3: '019008',
+          field4: '006',
+          field5: 'DDSY1352',
+          field6: 'false',
+          field7: '1',
+          field8: '预付费演示箱006-1'
         }
       ]
-    };
+    }
   },
   created() {},
   mounted() {},
   methods: {
     handleBind() {
       return this.$message({
-        type: "warning",
-        message: "暂无权限"
-      });
+        type: 'warning',
+        message: '暂无权限'
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

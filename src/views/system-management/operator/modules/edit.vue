@@ -7,7 +7,7 @@
  * @Description  : 页面描述
 -->
 <template>
-  <el-form :model="form" ref="form" style="padding:0 20px;" label-width="100px">
+  <el-form ref="form" :model="form" style="padding:0 20px;" label-width="100px">
     <el-form-item label="登录账号">
       <el-input v-model="form.field1" />
     </el-form-item>
@@ -36,7 +36,7 @@
         <el-option label="019008" value="019008">
           <div class="flex">
             <div>190977979899</div>
-            <div></div>
+            <div />
             <div>财务</div>
           </div>
         </el-option>
@@ -50,16 +50,16 @@
 
 <script>
 export default {
+  components: {},
   props: {},
   data() {
     return {
       form: {}
-    };
+    }
   },
-  components: {},
   mounted() {},
   methods: {}
-};
+}
 </script>
 <style lang="scss" scoped>
 .flex {

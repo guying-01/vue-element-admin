@@ -7,30 +7,30 @@
  * @Description  : 页面描述
 -->
 <template>
-  <el-form :model="form" ref="form" style="padding:0 20px;" label-width="120px">
+  <el-form ref="form" :model="form" style="padding:0 20px;" label-width="120px">
     <el-form-item label="角色名称">
       <el-input v-model="form.field1" />
     </el-form-item>
     <el-form-item label="角色描述">
-      <el-input type="textarea" v-model="form.field2"/>
+      <el-input v-model="form.field2" type="textarea" />
     </el-form-item>
   </el-form>
 </template>
 
 <script>
 export default {
+  components: {},
   props: {},
   data() {
     return {
       form: {
 
       }
-    };
+    }
   },
-  components: {},
   mounted() {},
   methods: {}
-};
+}
 </script>
 <style lang="scss" scoped>
 </style>

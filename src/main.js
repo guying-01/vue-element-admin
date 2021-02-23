@@ -49,8 +49,8 @@ Vue.use(Element, {
   // locale: enLang // 如果使用中文，无需设置，请删除
 })
 
-Vue.component('FilterPanel',FilterPanel)
-Vue.component('CommTable',CommTable)
+Vue.component('FilterPanel', FilterPanel)
+Vue.component('CommTable', CommTable)
 
 // register global utility filters
 Object.keys(filters).forEach(key => {

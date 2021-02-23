@@ -1,52 +1,52 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-02-16 18:26:27
- * @LastEditors  : gy
- * @LastEditTime : 2021-02-17 20:01:54
- * @FilePath     : /yufufei/src/views/system-management/operator/modules/add.vue
+ * @LastEditors: gy
+ * @LastEditTime: 2021-02-23 11:11:51
+ * @FilePath     : /yufufei/src/views/system-management/dianbiao/modules/add.vue
  * @Description  : 页面描述
 -->
 <template>
-  <el-form ref="form" :model="form" style="padding:0 20px;" label-width="100px">
-    <el-form-item label="登录账号">
-      <el-input v-model="form.field1" />
+  <el-form ref="form" :model="form" style="padding:0 20px;" label-width="120px">
+    <el-form-item label="水表类型">
+      <el-select v-model="form.field8" placeholder="请选择">
+        <el-option :value="1" label="阀控" />
+        <el-option :value="2" label="Modbus" />
+      </el-select>
     </el-form-item>
-    <el-form-item label="姓名">
+    <el-form-item label="仪表编号">
       <el-input v-model="form.field2" />
     </el-form-item>
-    <el-form-item label="电话">
-      <el-input v-model="form.field3" />
-    </el-form-item>
-    <el-form-item label="密码">
+    <el-form-item label="生产编号">
       <el-input v-model="form.field4" />
     </el-form-item>
-    <el-form-item label="确认密码">
-      <el-input v-model="form.field5" />
-    </el-form-item>
-    <el-form-item label="操作员角色">
-      <el-select v-model="form.field6" placeholder="请选择">
+    <el-form-item label="网关编号">
+      <el-select v-model="form.field3" placeholder="请选择">
         <el-option label="" :value="1">
           <div class="flex">
             <div>主键</div>
-            <div>名称</div>
-            <div>角色描述</div>
+            <div>网关编号</div>
           </div>
         </el-option>
         <el-option label="019006" value="019006">
           <div class="flex">
             <div>190977979899</div>
-            <div>租户</div>
-            <div>财务</div>
+            <div>019006</div>
           </div>
         </el-option>
         <el-option label="019008" value="019008">
           <div class="flex">
             <div>190977979899</div>
-            <div />
-            <div>财务</div>
+            <div>019008</div>
           </div>
         </el-option>
       </el-select>
+    </el-form-item>
+    <el-form-item label="型号">
+      <el-input v-model="form.field6" />
+    </el-form-item>
+    <el-form-item label="商铺号">
+      <el-input v-model="form.field5" />
     </el-form-item>
     <el-form-item label="备注">
       <el-input v-model="form.field7" />
@@ -60,7 +60,10 @@ export default {
   props: {},
   data() {
     return {
-      form: {}
+      form: {
+        field8: 1
+
+      }
     }
   },
   mounted() {},

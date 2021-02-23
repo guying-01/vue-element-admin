@@ -7,18 +7,18 @@
  * @Description  : 页面描述
 -->
 <template>
-  <div></div>
+  <div />
 </template>
 
 <script>
 export default {
-  props : {},
-  data () {
-    return {
-    };
-  },
   components: {},
-  mounted(){},
+  props: {},
+  data() {
+    return {
+    }
+  },
+  mounted() {},
   methods: {}
 }
 

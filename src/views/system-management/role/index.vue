@@ -40,17 +40,18 @@
     <div class="list">
       <comm-table
         :data="tableData"
-        @selection-change="selectionChange"
         :static-table="true"
+        @selection-change="selectionChange"
       >
         <el-table-column label="" type="selection" />
         <el-table-column label="角色名称" prop="field1" />
         <el-table-column label="角色描述" prop="field2" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="success" @click="handleEdit(scope)"
-              >编辑</el-button
-            >
+            <el-button
+              type="success"
+              @click="handleEdit(scope)"
+            >编辑</el-button>
           </template>
         </el-table-column>
       </comm-table>
@@ -58,43 +59,45 @@
     <el-drawer
       :visible="dialogVisible"
       :title="title"
-      @close="dialogVisible = false"
       size="50%"
+      @close="dialogVisible = false"
     >
       <Add ref="addDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="dialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="dialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="dialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="dialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
   </div>
 </template>
 
 <script>
-import TableMixin from "@/mixins/TableCommMixin";
-import Add from "./modules/add";
+import TableMixin from '@/mixins/TableCommMixin'
+import Add from './modules/add'
 export default {
-  name: "SystemManagementRole",
-  props: {},
-  mixins: [TableMixin],
+  name: 'SystemManagementRole',
   components: { Add },
+  mixins: [TableMixin],
+  props: {},
   data() {
     return {
       form: {},
       tableData: [
-        { field1: "租户", field2: "" },
-        { field1: "财务", field2: "财务" }
+        { field1: '租户', field2: '' },
+        { field1: '财务', field2: '财务' }
       ]
-    };
+    }
   },
   created() {},
   mounted() {},
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

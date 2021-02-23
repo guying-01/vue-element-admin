@@ -256,7 +256,7 @@ export default {
     Baojingshezhi,
     Lishichaobiaojilu
   },
-  mixins:[TableMixin],
+  mixins: [TableMixin],
   props: {},
   provide() {
     return {

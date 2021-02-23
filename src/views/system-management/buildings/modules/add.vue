@@ -7,15 +7,15 @@
  * @Description  : 页面描述
 -->
 <template>
-  <el-form :model="form" ref="form" style="padding:0 20px;">
+  <el-form ref="form" :model="form" style="padding:0 20px;">
     <el-form-item label="建筑号">
-      <el-input v-model="form.field1"/>
+      <el-input v-model="form.field1" />
     </el-form-item>
     <el-form-item label="建筑名">
-      <el-input v-model="form.field2"/>
+      <el-input v-model="form.field2" />
     </el-form-item>
     <el-form-item label="备注">
-      <el-input v-model="form.field3"/>
+      <el-input v-model="form.field3" />
     </el-form-item>
 
   </el-form>
@@ -23,14 +23,14 @@
 
 <script>
 export default {
-  props : {},
-  data () {
-    return {
-      form:{}
-    };
-  },
   components: {},
-  mounted(){},
+  props: {},
+  data() {
+    return {
+      form: {}
+    }
+  },
+  mounted() {},
   methods: {}
 }
 

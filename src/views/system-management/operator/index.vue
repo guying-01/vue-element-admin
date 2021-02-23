@@ -25,8 +25,7 @@
                   range-separator="至"
                   start-placeholder="开始日期"
                   end-placeholder="结束日期"
-                >
-                </el-date-picker>
+                />
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -50,8 +49,8 @@
     <div class="list">
       <comm-table
         :data="tableData"
-        @selection-change="selectionChange"
         :static-table="true"
+        @selection-change="selectionChange"
       >
         <el-table-column label="" type="selection" />
         <el-table-column label="创建日期" prop="field1" />
@@ -60,9 +59,10 @@
         <el-table-column label="操作员姓名" prop="field4" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="success" @click="handleEdit(scope)"
-              >编辑</el-button
-            >
+            <el-button
+              type="success"
+              @click="handleEdit(scope)"
+            >编辑</el-button>
           </template>
         </el-table-column>
       </comm-table>
@@ -70,65 +70,71 @@
     <el-drawer
       :visible="dialogVisible"
       :title="title"
-      @close="dialogVisible = false"
       size="50%"
+      @close="dialogVisible = false"
     >
       <Add ref="addDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="dialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="dialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="dialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="dialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
 
     <el-drawer
       :visible="eidtDialogVisible"
       title="编辑"
-      @close="eidtDialogVisible = false"
       size="50%"
+      @close="eidtDialogVisible = false"
     >
       <Edit ref="editDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="eidtDialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="eidtDialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="eidtDialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="eidtDialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
 
     <el-drawer
       :visible="resetDialogVisible"
       title="修改密码"
-      @close="resetDialogVisible = false"
       size="50%"
+      @close="resetDialogVisible = false"
     >
       <ResetPwd ref="resetDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="resetDialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="resetDialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="resetDialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="resetDialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
   </div>
 </template>
 
 <script>
-import TableMixin from "@/mixins/TableCommMixin";
-import Add from "./modules/add";
-import Edit from "./modules/edit";
-import ResetPwd from "./modules/resetPwd";
+import TableMixin from '@/mixins/TableCommMixin'
+import Add from './modules/add'
+import Edit from './modules/edit'
+import ResetPwd from './modules/resetPwd'
 export default {
-  name: "SystemManagementOperator",
+  name: 'SystemManagementOperator',
+  components: { Add, ResetPwd, Edit },
   mixins: [TableMixin],
-  components: { Add, ResetPwd ,Edit},
   props: {},
   data() {
     return {
@@ -137,19 +143,19 @@ export default {
       eidtDialogVisible: false,
       tableData: [
         {
-          field1: "2019-07-01 13:31:56",
-          field2: "Acrel管理员",
-          field3: "	acrelbk",
-          field4: "演示账号"
+          field1: '2019-07-01 13:31:56',
+          field2: 'Acrel管理员',
+          field3: '	acrelbk',
+          field4: '演示账号'
         },
         {
-          field1: "2019-08-07 17:09:35",
-          field2: "Acrel管理员",
-          field3: "AdminSZY",
-          field4: "AdminSZY"
+          field1: '2019-08-07 17:09:35',
+          field2: 'Acrel管理员',
+          field3: 'AdminSZY',
+          field4: 'AdminSZY'
         }
       ]
-    };
+    }
   },
   created() {},
   mounted() {},
@@ -157,21 +163,21 @@ export default {
     handleResetPassword() {
       if (this.selection.length < 1) {
         return this.$message({
-          type: "error",
-          message: "请选择需要修改密码的用户"
-        });
+          type: 'error',
+          message: '请选择需要修改密码的用户'
+        })
       }
-      this.resetDialogVisible = true;
+      this.resetDialogVisible = true
     },
     handleEdit(scope) {
       console.log(scope)
-      this.eidtDialogVisible = true;
+      this.eidtDialogVisible = true
       this.$nextTick(() => {
-        this.$refs["editDialog"]["form"] = scope.row;
-      });
+        this.$refs['editDialog']['form'] = scope.row
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -20,8 +20,7 @@
                   range-separator="至"
                   start-placeholder="开始日期"
                   end-placeholder="结束日期"
-                >
-                </el-date-picker>
+                />
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -45,8 +44,8 @@
     <div class="list">
       <comm-table
         :data="tableData"
-        @selection-change="selectionChange"
         :static-table="true"
+        @selection-change="selectionChange"
       >
         <el-table-column label="" type="selection" />
         <el-table-column label="创建日期" prop="field1" />
@@ -55,9 +54,10 @@
         <el-table-column label="备注" prop="field4" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="success" @click="handleEdit(scope)"
-              >编辑</el-button
-            >
+            <el-button
+              type="success"
+              @click="handleEdit(scope)"
+            >编辑</el-button>
           </template>
         </el-table-column>
       </comm-table>
@@ -69,12 +69,14 @@
     >
       <Add ref="addDialog" />
       <div style="margin-left:20px">
-        <el-button type="primary" @click="dialogVisible = false"
-          >确认</el-button
-        >
-        <el-button type="default" @click="dialogVisible = false"
-          >取消</el-button
-        >
+        <el-button
+          type="primary"
+          @click="dialogVisible = false"
+        >确认</el-button>
+        <el-button
+          type="default"
+          @click="dialogVisible = false"
+        >取消</el-button>
       </div>
     </el-drawer>
 
@@ -83,39 +85,39 @@
 </template>
 
 <script>
-import TableMixin from "@/mixins/TableCommMixin";
-import Add from "./modules/add";
-import Detail from "./modules/detail";
+import TableMixin from '@/mixins/TableCommMixin'
+import Add from './modules/add'
+import Detail from './modules/detail'
 export default {
-  name: "SystemManagementBuildings",
-  props: {},
-  mixins: [TableMixin],
+  name: 'SystemManagementBuildings',
   components: { Add, Detail },
+  mixins: [TableMixin],
+  props: {},
   data() {
     return {
       form: {},
       tableData: [
         {
-          field1: "2021-02-07 01:15:22",
-          field2: "12",
-          field3: "EFC-T5",
-          field4: ""
+          field1: '2021-02-07 01:15:22',
+          field2: '12',
+          field3: 'EFC-T5',
+          field4: ''
         },
         {
-          field1: "2021-02-07 01:15:22",
-          field2: "122",
-          field3: "浙江上百",
-          field4: "测试"
+          field1: '2021-02-07 01:15:22',
+          field2: '122',
+          field3: '浙江上百',
+          field4: '测试'
         }
       ]
-    };
+    }
   },
   created() {},
   mounted() {},
   methods: {
-    handleSearch() {},
+    handleSearch() {}
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>
