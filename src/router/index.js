@@ -89,25 +89,25 @@ export const constantRoutes = [
         path: 'buildings',
         component: () => import('@/views/system-management/buildings/index'),
         name: 'Buildings',
-        meta: { title: '建筑群设置', icon: '', affix: false }
+        meta: { title: '建筑群设置', icon: '', affix: true }
       },
       {
         path: 'gateway',
         component: () => import('@/views/system-management/gateway/index'),
         name: 'Gateway',
-        meta: { title: '网关设置', icon: '', affix: false }
+        meta: { title: '网关设置', icon: '', affix: true }
       },
       {
         path: 'diaobiao',
         component: () => import('@/views/system-management/dianbiao/index'),
         name: 'Diaobiao',
-        meta: { title: '电表设置', icon: '', affix: false }
+        meta: { title: '电表设置', icon: '', affix: true }
       },
       {
         path: 'role',
         component: () => import('@/views/system-management/role/index'),
         name: 'Role',
-        meta: { title: '角色设置', icon: '', affix: false }
+        meta: { title: '角色设置', icon: '', affix: true }
       },
       {
         path: 'permission',
@@ -119,7 +119,7 @@ export const constantRoutes = [
         path: 'operator',
         component: () => import('@/views/system-management/operator/index'),
         name: 'Operator',
-        meta: { title: '操作员设置', icon: '', affix: false }
+        meta: { title: '操作员设置', icon: '', affix: true }
       },
       {
         path: 'default-parameters',
@@ -131,19 +131,19 @@ export const constantRoutes = [
         path: 'shuibiao',
         component: () => import('@/views/system-management/shuibiao/index'),
         name: 'Shuibiao',
-        meta: { title: '水表管理', icon: '', affix: false }
+        meta: { title: '水表管理', icon: '', affix: true }
       },
       {
         path: 'nb-dianbiao',
         component: () => import('@/views/system-management/nb-dianbiao/index'),
         name: 'NbDianbiao',
-        meta: { title: 'NB电表设置', icon: '', affix: false }
+        meta: { title: 'NB电表设置', icon: '', affix: true }
       },
       {
         path: 'batch-issued',
         component: () => import('@/views/system-management/batch-issued/index'),
         name: 'BatchIssued',
-        meta: { title: '批量时控下发', icon: '', affix: false }
+        meta: { title: '批量时控下发', icon: '', affix: true }
       }
     ]
   },
