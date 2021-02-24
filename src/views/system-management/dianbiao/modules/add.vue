@@ -1,18 +1,18 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-02-16 18:26:27
- * @LastEditors  : gy
- * @LastEditTime : 2021-02-17 10:39:16
+ * @LastEditors: gy
+ * @LastEditTime: 2021-02-24 11:20:42
  * @FilePath     : /yufufei/src/views/system-management/dianbiao/modules/add.vue
  * @Description  : 页面描述
 -->
 <template>
   <el-form ref="form" :model="form" style="padding:0 20px;" label-width="120px">
     <el-form-item label="仪表编号">
-      <el-input v-model="form.field1" disabled />
+      <el-input v-model="form.field2" disabled />
     </el-form-item>
     <el-form-item label="网关编号">
-      <el-select v-model="form.field2" placeholder="请选择">
+      <el-select v-model="form.field13" placeholder="请选择">
         <el-option label="" :value="1">
           <div class="flex">
             <div>主键</div>
@@ -81,7 +81,8 @@ export default {
       form: {
         field1: '0000000000',
         field3: '00',
-        field4: '00'
+        field4: '00',
+        field8: 1
       }
     }
   },

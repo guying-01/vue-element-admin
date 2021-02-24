@@ -1,8 +1,8 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-01-04 22:54:18
- * @LastEditors  : gy
- * @LastEditTime : 2021-02-17 20:07:32
+ * @LastEditors: gy
+ * @LastEditTime: 2021-02-24 11:31:39
  * @FilePath     : /yufufei/src/views/system-management/operator/index.vue
  * @Description  : 页面描述
 -->
@@ -145,14 +145,16 @@ export default {
         {
           field1: '2019-07-01 13:31:56',
           field2: 'Acrel管理员',
-          field3: '	acrelbk',
-          field4: '演示账号'
+          field3: 'acrelbk',
+          field4: '演示账号',
+          field5: '1362379789'
         },
         {
           field1: '2019-08-07 17:09:35',
           field2: 'Acrel管理员',
           field3: 'AdminSZY',
-          field4: 'AdminSZY'
+          field4: 'AdminSZY',
+          field5: '1362379789'
         }
       ]
     }

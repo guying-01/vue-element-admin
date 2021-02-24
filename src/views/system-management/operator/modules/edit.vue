@@ -1,21 +1,21 @@
 <!--
  * @Author       : gy
  * @Date         : 2021-02-16 18:26:27
- * @LastEditors  : gy
- * @LastEditTime : 2021-02-17 20:02:36
+ * @LastEditors: gy
+ * @LastEditTime: 2021-02-24 11:30:27
  * @FilePath     : /yufufei/src/views/system-management/operator/modules/edit.vue
  * @Description  : 页面描述
 -->
 <template>
   <el-form ref="form" :model="form" style="padding:0 20px;" label-width="100px">
     <el-form-item label="登录账号">
-      <el-input v-model="form.field1" />
+      <el-input v-model="form.field3" />
     </el-form-item>
     <el-form-item label="姓名">
-      <el-input v-model="form.field2" />
+      <el-input v-model="form.field3" />
     </el-form-item>
     <el-form-item label="电话">
-      <el-input v-model="form.field3" />
+      <el-input v-model="form.field5" />
     </el-form-item>
     <el-form-item label="操作员角色">
       <el-select v-model="form.field6" placeholder="请选择">
