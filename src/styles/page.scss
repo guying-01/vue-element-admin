@@ -1,4 +1,11 @@
 .list-page{
+  & >:first-child{
+    margin-top: 20px;
+    &.filters{
+      padding-left: 20px;
+
+    }
+  }
   .operation{
     padding-left: 20px;
   }
