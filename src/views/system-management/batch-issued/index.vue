@@ -63,7 +63,7 @@
           <template slot-scope="scope">
             <el-button
               type="success"
-              @click="handleEdit(scope)"
+              @click="handleDetail(scope)"
             >查看</el-button>
           </template>
         </el-table-column>
@@ -87,20 +87,26 @@
         >取消</el-button>
       </div>
     </el-drawer>
+
+    <el-drawer :visible="detailVisible" size="50%" :title="title" @close="detailVisible = false">
+      <Detail ref="detailDialog" />
+    </el-drawer>
   </div>
 </template>
 
 <script>
 import TableMixin from '@/mixins/TableCommMixin'
 import Add from './modules/add'
+import Detail from './modules/detail'
 export default {
   name: 'SystemManagementBatchIssued',
-  components: { Add },
+  components: { Add, Detail },
   mixins: [TableMixin],
   props: {},
   data() {
     return {
       form: {},
+      detailVisible: false,
       tableData: [
         {
           field1: '2021-02-07 01:15:22',
@@ -139,7 +145,15 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    handleDetail(scope) {
+      this.detailVisible = true
+      this.title = '查看详情'
+      this.$nextTick(() => {
+        this.$refs.detailDialog.form = scope.row
+      })
+    }
+  }
 }
 </script>
 

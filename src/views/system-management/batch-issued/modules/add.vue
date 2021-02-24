@@ -2,17 +2,19 @@
  * @Author       : gy
  * @Date         : 2021-02-16 18:26:27
  * @LastEditors: gy
- * @LastEditTime: 2021-02-23 16:31:59
+ * @LastEditTime: 2021-02-24 11:11:08
  * @FilePath     : /yufufei/src/views/system-management/dianbiao/modules/add.vue
  * @Description  : 页面描述
 -->
 <template>
-  <div style="padding:0 20px">
+  <div style="padding:20px">
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-checkbox v-model="checkAll" @change="handleCheckboxChange">
-          全选
-        </el-checkbox>
+        <div style="margin-bottom: 20px">
+          <el-checkbox v-model="checkAll" @change="handleCheckboxChange">
+            全选
+          </el-checkbox>
+        </div>
 
         <el-tree
           ref="tree"
@@ -144,6 +146,13 @@
               <el-option :value="2" label="否" />
             </el-select>
           </el-form-item>
+          <el-form-item label="备注">
+            <el-input
+              v-model="form.field12"
+              type="textarea"
+              placeholder="请输入备注"
+            />
+          </el-form-item>
         </el-form>
       </el-col>
     </el-row>
@@ -174,21 +183,23 @@ export default {
           ]
         }
       ],
-      form: {
-      }
+      form: {}
     }
   },
   mounted() {},
   methods: {
-    handleCheckboxChange() {}
+    handleCheckboxChange(val) {
+      this.$refs.tree.setCheckedNodes(val ? this.treeList : [])
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
-.flex {
-  justify-content: space-around;
-  div {
-    width: 150px;
-  }
+.title{
+  margin-bottom: 20px;
+}
+
+.extra{
+  margin-bottom:20px;
 }
 </style>
