@@ -65,14 +65,16 @@
         <el-table-column label="财务收入" prop="field6" />
       </comm-table>
     </div>
+    <BarChart style="margin-top:20px" />
   </div>
 </template>
 
 <script>
 import TableMixin from '@/mixins/TableCommMixin'
-import moment from 'moment'
+import BarChart from './modules/chart'
 export default {
   name: 'DianReportDianxiaoshou',
+  components: { BarChart },
   mixins: [TableMixin],
   props: {},
   data() {

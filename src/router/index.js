@@ -214,7 +214,7 @@ export const constantRoutes = [
   {
     path: '/shoudian-management',
     component: Layout,
-    meta: { title: '售电管理', icon: '' },
+    meta: { title: '售电管理', icon: 'el-icon-shopping-cart-1' },
     alwaysShow: true,
     children: [
       {
@@ -246,7 +246,7 @@ export const constantRoutes = [
   {
     path: '/shoushui-management',
     component: Layout,
-    meta: { title: '售水管理', icon: '' },
+    meta: { title: '售水管理', icon: 'el-icon-shopping-cart-2' },
     alwaysShow: true,
     children: [
       {
@@ -272,7 +272,7 @@ export const constantRoutes = [
   {
     path: '/dian-report',
     component: Layout,
-    meta: { title: '电报表中心', icon: '' },
+    meta: { title: '电报表中心', icon: 'el-icon-notebook-1' },
     alwaysShow: true,
     children: [
       {
@@ -358,7 +358,7 @@ export const constantRoutes = [
   {
     path: '/shui-report',
     component: Layout,
-    meta: { title: '水报表中心', icon: '' },
+    meta: { title: '水报表中心', icon: 'el-icon-notebook-2' },
     alwaysShow: true,
     children: [
       {
