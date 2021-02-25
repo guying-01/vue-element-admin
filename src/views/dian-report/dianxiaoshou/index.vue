@@ -65,7 +65,7 @@
         <el-table-column label="财务收入" prop="field6" />
       </comm-table>
     </div>
-    <BarChart style="margin-top:20px" />
+    <BarChart style="margin-top:20px" :chart-data="tableData" />
   </div>
 </template>
 

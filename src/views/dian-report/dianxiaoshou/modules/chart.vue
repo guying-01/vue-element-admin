@@ -12,6 +12,12 @@ const animationDuration = 6000
 export default {
   mixins: [resize],
   props: {
+    chartData: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
     className: {
       type: String,
       default: 'chart'
@@ -30,9 +36,19 @@ export default {
       chart: null
     }
   },
+  watch: {
+    chartData: {
+      handler(val) {
+        this.$nextTick(() => {
+          this.initChart(val)
+        })
+      },
+      immediate: true
+    }
+  },
   mounted() {
     this.$nextTick(() => {
-      this.initChart()
+      // this.initChart()
     })
   },
   beforeDestroy() {
@@ -43,8 +59,17 @@ export default {
     this.chart = null
   },
   methods: {
-    initChart() {
+    initChart(data) {
       this.chart = echarts.init(this.$el, 'macarons')
+      const dataset = {
+        source: [
+          ['date', '售电金额', '冲正金额', '退电金额', '财务收入']
+        ]
+      }
+
+      data.map(item => {
+        dataset.source.push([item.field2, item.field3, item.field4, item.field5, item.field6])
+      })
 
       this.chart.setOption({
         tooltip: {
@@ -60,9 +85,10 @@ export default {
           bottom: '3%',
           containLabel: true
         },
+        legend: {},
+        dataset,
         xAxis: [{
           type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           axisTick: {
             alignWithLabel: true
           }
@@ -73,28 +99,13 @@ export default {
             show: false
           }
         }],
-        series: [{
-          name: 'pageA',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [79, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageB',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [80, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageC',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [30, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }]
+        series: [
+          { type: 'bar' },
+          { type: 'bar' },
+          { type: 'bar' },
+          { type: 'bar' }
+
+        ]
       })
     }
   }
