@@ -82,8 +82,10 @@
 </template>
 
 <script>
+import TableMixin from '@/mixins/TableCommMixin'
 export default {
   name: 'DianReportGuankongdianbiaonenghao',
+  mixins: [TableMixin],
   props: {},
   data() {
     return {

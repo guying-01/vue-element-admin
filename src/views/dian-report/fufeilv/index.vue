@@ -85,8 +85,10 @@
 </template>
 
 <script>
+import TableMixin from '@/mixins/TableCommMixin'
 export default {
   name: 'DianReportFufeilv',
+  mixins: [TableMixin],
   props: {},
   data() {
     return {

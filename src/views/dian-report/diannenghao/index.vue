@@ -29,7 +29,7 @@
                 <el-row :gutter="20">
                   <el-col :span="8">
                     <el-form-item label="统计类型:">
-                      <el-select placeholder="请选择">
+                      <el-select v-model="form.prop1" placeholder="请选择">
                         <el-option label="日报表" value="0" />
                         <el-option label="月报表" value="1" />
                         <el-option label="年报表" value="2" />
@@ -39,7 +39,7 @@
                   <el-col :span="8">
                     <el-form-item label="创建时间:">
                       <el-date-picker
-                        v-model="form.prop1"
+                        v-model="form.prop2"
                         type="date"
                       />
                     </el-form-item>
@@ -82,8 +82,10 @@
 </template>
 
 <script>
+import TableMixin from '@/mixins/TableCommMixin'
 export default {
   name: 'DianReportDiannenghao',
+  mixins: [TableMixin],
   props: {},
   data() {
     return {

@@ -21,46 +21,56 @@
     <div class="operation">
       <el-button type="primary">查询</el-button>
       <el-button type="success">导出</el-button>
-      <el-button type="warning">总表管理</el-button>
+      <el-button type="warning" @click="zongbiaoDialogVisible = true">总表管理</el-button>
     </div>
     <div class="list">
       <comm-table
         :data="tableData"
         :static-table="true"
+        default-expand-all
+        row-keys="field1"
+        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         @selection-change="selectionChange"
       >
-        <el-table-column label="开始时间" prop="field1" />
-        <el-table-column label="结束时间" prop="field2" />
-        <el-table-column label="表号" prop="field3" />
-        <el-table-column label="商铺号" prop="field4" />
-        <el-table-column label="用户名" prop="field5" />
-        <el-table-column label="用户编号" prop="field6" />
-        <el-table-column label="上次抄表" prop="field7" />
-        <el-table-column label="本次抄表" prop="field8" />
-        <el-table-column label="用电量" prop="field9" />
-        <el-table-column label="互感器倍率" prop="field10" />
-        <el-table-column label="上次余额" prop="field11" />
-        <el-table-column label="本次余额" prop="field12" />
-        <el-table-column label="售电金额" prop="field13" />
-        <el-table-column label="使用金额" prop="field14" />
-        <el-table-column label="备注" prop="field15" />
+        <el-table-column type="selection" />
+        <el-table-column prop="field1" label="电表编号" />
+        <el-table-column prop="field2" label="户号" />
+        <el-table-column prop="field3" label="用电量" />
+        <el-table-column prop="field4" label="支路总用电量" />
+        <el-table-column prop="field5" label="能耗差值(支-总)" />
+        <el-table-column prop="field6" label="百分比(支/总)" />
       </comm-table>
     </div>
+    <el-dialog :visible="zongbiaoDialogVisible" title="总表管理" @close="zongbiaoDialogVisible = false">
+      <ZongbiaoGuanli />
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import TableMixin from '@/mixins/TableCommMixin'
-// TODO
+import ZongbiaoGuanli from './modules/zongbiaoguanli'
 export default {
   name: 'DianReportSunhaofenxi',
+  components: { ZongbiaoGuanli },
   mixins: [TableMixin],
   props: {},
   data() {
     return {
+      zongbiaoDialogVisible: false,
       tableData: [
-        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0201', field5: 'nb0001', field6: '01900374', field7: '1.00', field8: '1.00', field9: '0.00', field10: '1', field11: '1460.00', field12: '1460.00', field13: '0.00', field14: '0.00', field15: '上海实验室N' },
-        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0202', field5: '上海实验室NB表2', field6: '01900513', field7: '0.23', field8: '0.00', field9: '-0.23', field10: '1', field11: '100.00', field12: '0.00', field13: '0.00', field14: '100.00', field15: '上海实验室N' }
+        {
+          field1: '0191480506',
+          field2: '203',
+          field3: '0',
+          field4: '0',
+          field5: '0',
+          field6: '0%',
+          children: [
+            { field1: '0191480507', field2: '222', field3: '0' },
+            { field1: '0191480508', field2: '204', field3: '0' }
+          ]
+        }
       ],
       checkAll: false,
       form: {}
@@ -73,5 +83,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>
