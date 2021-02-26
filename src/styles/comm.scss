@@ -4,3 +4,9 @@
 .el-drawer__body {
   overflow: auto;
 }
+
+.el-drawer__header{
+  span{
+    outline: none!important;
+  }
+}

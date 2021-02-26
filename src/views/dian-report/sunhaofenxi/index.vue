@@ -50,9 +50,11 @@
 </template>
 
 <script>
+import TableMixin from '@/mixins/TableCommMixin'
 // TODO
 export default {
   name: 'DianReportSunhaofenxi',
+  mixins: [TableMixin],
   props: {},
   data() {
     return {
