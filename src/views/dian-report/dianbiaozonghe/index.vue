@@ -78,14 +78,28 @@
         </div>
       </el-col>
     </el-row>
+
+    <div class="charts">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <BarChart1 :chart-data="tableData" />
+        </el-col>
+        <el-col :span="12">
+          <BarChart2 :chart-data="tableData" />
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
 import TableMixin from '@/mixins/TableCommMixin'
+import BarChart1 from './modules/chart1'
+import BarChart2 from './modules/chart2'
 // TODO
 export default {
   name: 'DianReportDianbiaozonghe',
+  components: { BarChart1, BarChart2 },
   mixins: [TableMixin],
   props: {},
   data() {
@@ -115,8 +129,8 @@ export default {
         }
       ],
       tableData: [
-        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0201', field5: 'nb0001', field6: '01900374', field7: '1.00', field8: '1.00', field9: '0.00', field10: '1', field11: '1460.00', field12: '1460.00', field13: '0.00', field14: '0.00', field15: '上海实验室N' },
-        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0202', field5: '上海实验室NB表2', field6: '01900513', field7: '0.23', field8: '0.00', field9: '-0.23', field10: '1', field11: '100.00', field12: '0.00', field13: '0.00', field14: '100.00', field15: '上海实验室N' }
+        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0201', field5: 'nb0001', field6: '01900374', field7: '1.00', field8: '1.00', field9: '-235.97', field10: '1', field11: '1460.00', field12: '1460.00', field13: '0.00', field14: '0.00', field15: '上海实验室N' },
+        { field1: '2021-02-25', field2: '2021-02-25', field3: '019001NB0001', field4: '0202', field5: '上海实验室NB表2', field6: '01900513', field7: '0.23', field8: '0.00', field9: '452.19', field10: '1', field11: '100.00', field12: '0.00', field13: '0.00', field14: '100.00', field15: '上海实验室N' }
       ]
     }
   },
@@ -131,5 +145,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.charts{
+  padding:20px;
+}
 </style>
